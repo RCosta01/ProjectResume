@@ -1,0 +1,2 @@
+sap.ui.define(["projects/controller/Homepage.controller"],function(e){"use strict";QUnit.module("Homepage Controller");QUnit.test("I should test the Homepage controller",function(o){var t=new e;t.onInit();o.ok(t)})});
+//# sourceMappingURL=Homepage.controller.js.map
