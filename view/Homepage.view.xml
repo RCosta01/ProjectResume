@@ -1,18 +1,60 @@
-<mvc:View controllerName="projects.controller.Homepage"
+<mvc:View
+    controllerName="projects.controller.Homepage"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-    <Page id="page" title="{i18n>title}" showHeader="false">
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+        showHeader="false"
+        class="myBackgroundImage"
+    >
         <content>
             <VBox>
-                <OverflowToolbar class="headerColor headerSize" height="60px">
-                    <core:Icon src="sap-icon://sap-ui5" size="30px" />
-                    <Title text="{i18n>title}" level="H1" class="headerTextColor headerTextSize" />
+                <OverflowToolbar
+                    class="headerColor headerSize"
+                    height="60px"
+                >
+                    <core:Icon
+                        src="sap-icon://sap-ui5"
+                        size="30px"
+                    />
+                    <Title
+                        text="{i18n>title}"
+                        level="H1"
+                        class="headerTextColor headerTextSize"
+                    />
                     <ToolbarSpacer />
-                    <core:Icon src="sap-icon://customer" class="headerTextColor" />
-                    <Label class="sapUiSmallMarginEnd headerTextColor" text="{userInfo>/cname}" />
-                    <Button text="{i18n>appLogout}" press="onLogout" class="colorButtonInner" />
                 </OverflowToolbar>
+            </VBox>
+            <VBox
+                class="sapUiLargeMarginTop"
+                alignContent="Center"
+            >
+                <HBox justifyContent="SpaceBetween" class="myCenterMargins">
+                    <GenericTile
+                        header="Teste"
+                        subheader="teste2"
+                        class="tile"
+                    >
+                        <TileContent />
+                    </GenericTile>
+                    <GenericTile
+                        header="Teste"
+                        subheader="teste2"
+                        class="tile"
+                    >
+                        <TileContent />
+                    </GenericTile>
+                    <GenericTile
+                        header="Teste"
+                        subheader="teste2"
+                        class="tile"
+                    >
+                        <TileContent />
+                    </GenericTile>
+                </HBox>
             </VBox>
         </content>
     </Page>

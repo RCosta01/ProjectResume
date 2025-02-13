@@ -1,1 +1,30 @@
 /* Enter your custom styles here */
+
+.myCenterMargins {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.myBackgroundImage {
+    background-image: url("../images/appBackground2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100%;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(800px); /* Start below */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tile {
+    animation: slideUp 0.8s ease-out forwards;
+}
