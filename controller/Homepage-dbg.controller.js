@@ -5,6 +5,10 @@ sap.ui.define([
 
     return Controller.extend("projects.controller.Homepage", {
         onInit() {
+        },
+
+        onTest: function(){
+            var teste = 1;
         }
     });
 });

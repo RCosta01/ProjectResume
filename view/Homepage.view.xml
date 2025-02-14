@@ -1,60 +1,67 @@
-<mvc:View
-    controllerName="projects.controller.Homepage"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core"
->
-    <Page
-        id="page"
-        title="{i18n>title}"
-        showHeader="false"
-        class="myBackgroundImage"
-    >
+<mvc:View controllerName="projects.controller.Homepage"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:l="sap.ui.layout">
+    <Page id="page"
+          title="{i18n>title}"
+          showHeader="false"
+          class="myBackgroundImage">
         <content>
             <VBox>
-                <OverflowToolbar
-                    class="headerColor headerSize"
-                    height="60px"
-                >
-                    <core:Icon
-                        src="sap-icon://sap-ui5"
-                        size="30px"
-                    />
-                    <Title
-                        text="{i18n>title}"
-                        level="H1"
-                        class="headerTextColor headerTextSize"
-                    />
+                <OverflowToolbar class="headerColor headerSize"
+                                 height="60px">
+                    <core:Icon src="sap-icon://sap-ui5"
+                               size="30px" />
+                    <Title text="{i18n>title}"
+                           level="H1"
+                           class="headerTextColor headerTextSize" />
                     <ToolbarSpacer />
                 </OverflowToolbar>
             </VBox>
-            <VBox
-                class="sapUiLargeMarginTop"
-                alignContent="Center"
-            >
-                <HBox justifyContent="SpaceBetween" class="myCenterMargins">
-                    <GenericTile
-                        header="Teste"
-                        subheader="teste2"
-                        class="tile"
-                    >
-                        <TileContent />
-                    </GenericTile>
-                    <GenericTile
-                        header="Teste"
-                        subheader="teste2"
-                        class="tile"
-                    >
-                        <TileContent />
-                    </GenericTile>
-                    <GenericTile
-                        header="Teste"
-                        subheader="teste2"
-                        class="tile"
-                    >
-                        <TileContent />
-                    </GenericTile>
+            <l:Grid>
+                <FlexBox>
+                    <layoutData>
+                        <l:GridData span="XL3 L3 M2 S1" />
+                    </layoutData>
+                </FlexBox>
+                <Panel class="sapUiLargeMarginTop">
+                    <VBox>
+                        <Title text="{i18n>homepage.aboutme.title}" />
+                    </VBox>
+                    <layoutData>
+                        <l:GridData span="XL6 L6 M8 S10" />
+                    </layoutData>
+                </Panel>
+                <FlexBox>
+                    <layoutData>
+                        <l:GridData span="XL4 L3 M2 S1" />
+                    </layoutData>
+                </FlexBox>
+            </l:Grid>
+            <VBox class="sapUiLargeMarginTop"
+                  alignContent="Center"
+                  visible="{= !${device>/system/phone} }">
+                <HBox justifyContent="SpaceBetween"
+                      class="myCenterMargins">
+                    <Button text="Teste"
+                            width="100px" />
+                    <Button text="Teste"
+                            width="100px" />
+                    <Button text="Teste"
+                            width="100px" />
                 </HBox>
+            </VBox>
+            <VBox class="sapUiLargeMarginTop"
+                  alignContent="Center"
+                  visible="{device>/system/phone}">
+                <Button text="Teste"
+                        width="100px"
+                        press="onTest" />
+                <Button text="Teste"
+                        width="100px" />
+                <Button text="Teste"
+                        width="100px" />
             </VBox>
         </content>
     </Page>

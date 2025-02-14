@@ -1,8 +1,25 @@
 /* Enter your custom styles here */
 
-.myCenterMargins {
-    margin-left: 35%;
-    margin-right: 35%;
+
+@media only screen and (min-width: 1920px) {
+    .myCenterMargins {
+        margin-left: 35%;
+        margin-right: 35%;
+    }
+}
+
+@media only screen and (min-width: 1024px ) and (max-width: 1919px) {
+    .myCenterMargins {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+
+@media only screen and (min-width: 680px ) and (max-width: 1023px) {
+    .myCenterMargins {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 }
 
 .myBackgroundImage {
@@ -27,4 +44,8 @@
 
 .tile {
     animation: slideUp 0.8s ease-out forwards;
+}
+
+.myAboutMeBox {
+    margin: 200px 300px 200px 300px;
 }
