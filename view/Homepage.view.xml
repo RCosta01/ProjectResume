@@ -56,7 +56,7 @@
             </VBox>
             <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
-                  visible="{device>/system/phone}">
+                  visible="{device>/system/phone}" alignItems="Center">
                 <!--<Button text="Go to Test Page1"
                         width="150px"
                         press="onNav" /> -->
