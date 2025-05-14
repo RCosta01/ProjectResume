@@ -45,7 +45,8 @@
                 <HBox justifyContent="SpaceBetween"
                       class="myCenterMargins">
                     <Button text="Teste"
-                            width="100px" />
+                            width="100px" 
+                            press="onNav"/>
                     <Button text="Teste"
                             width="100px" />
                     <Button text="Teste"
@@ -57,11 +58,22 @@
                   visible="{device>/system/phone}">
                 <Button text="Teste"
                         width="100px"
-                        press="onTest" />
+                        press="onNav" />
                 <Button text="Teste"
                         width="100px" />
                 <Button text="Teste"
                         width="100px" />
+            </VBox>
+
+            <VBox class="myTestVbox" width="100px"  alignItems="Center" justifyContent="Center">
+                <Text text="teste" class="myBlackText sapUiTinyMarginTop"></Text>
+                <Text text="teste" class="myBlackText sapUiTinyMarginBottom"></Text>
+            </VBox>
+            <VBox class="myCenteredVBox">
+                <Button icon="sap-icon://accept" text="Botão 1" type="Transparent"/>
+                <Button icon="sap-icon://cancel" text="Botão 2 com tamanho diferente" type="Transparent"/>
+                <Button icon="sap-icon://edit" text="Botão 3 testee" type="Transparent"/>
+                <Button icon="sap-icon://add" text="Botão 4 testeeeeeeee" type="Transparent"/>
             </VBox>
         </content>
     </Page>

@@ -1,0 +1,67 @@
+<core:FragmentDefinition displayBlock="true" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" height="100%" xmlns="sap.m">
+    <Dialog busyIndicatorDelay="0" title="{i18n>pdp.massObjCreationTitle}" contentWidth="500px" class="">
+        <Panel class="">
+            <SegmentedButton id="pdp-chooseObjButton" selectedKey="lib" selectionChange="onChangeObj" width="100%">
+                <items>
+                    <SegmentedButtonItem text="{i18n>pdp.massObjCreationLib}" key="lib" />
+                    <SegmentedButtonItem text="{i18n>pdp.massObjCreationCust}" key="new" />
+                </items>
+            </SegmentedButton>
+            <VBox id="pdp-addObjectivesLib" class="sapUiSmallMarginTop">
+                <l:Grid defaultSpan="XL12 L12 M12 S12" visible="true" class="createObj">
+                    <Title text="{i18n>pdp.objCreationInis}" level="H2" class="sapUiSmallMarginTop"/>
+                    <MultiInput width="100%" id="pdp-multiInput" class="sapUiTinyMarginTop sapUiSmallMarginBottom" suggestionItems="{
+				            path: 'libraryObjectives>/',
+				            sorter: { path: 'cust_objName' }
+			            }" valueHelpRequest="handleValueHelp">
+                        <core:Item key="{libraryObjectives>externalCode}" text="{libraryObjectives>cust_objName}" />
+                    </MultiInput>
+                    <Title text="{i18n>pdp.objCreationColab}" level="H2" class="sapUiSmallMarginTop" />
+                    <MultiComboBox id="pdp-libObjColab" items="{TeamPDP>/}" class="sapUiTinyMarginTop sapUiSmallMarginBottom">
+                        <core:Item key="{TeamPDP>NColab} {TeamPDP>pId}" text="{TeamPDP>Nome} - {TeamPDP>Titulo}" />
+                    </MultiComboBox>
+                    <Title level="H2" text="{i18n>pdp.objCreationRealDate}" class="sapUiSmallMarginTop" />
+                    <DatePicker id="pdp-idDatePickerAssign" displayFormat="dd-MM-yyyy" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
+                    <Title level="H2" text="{i18n>pdp.objCreationObs}" class="sapUiSmallMarginTop" />
+                    <TextArea rows="3" id="pdp-idMassLibObs" width="100%" value="" placeholder="{i18n>pdp.objCreationObs}" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
+                </l:Grid>
+            </VBox>
+            <VBox visible="false" id="pdp-addObjectivesCust" class="sapUiSmallMarginTop">
+                <l:Grid defaultSpan="XL12 L12 M12 S12" class="createObj">
+                    <Title level="H1" text="{i18n>pdp.objCreationIni}" class="sapUiSmallMarginTop"/>
+                    <Input id="pdp-idInputCObj" width="100%" value="" placeholder="{i18n>pdp.objCreationIni}" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
+                    <Title level="H2" text="{i18n>pdp.objCreationDesc}" class="sapUiSmallMarginTop" />
+                    <TextArea id="pdp-idTextAreaCObj" width="100%" value="" placeholder="{i18n>pdp.objCreationDescPh}" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
+                    <Title level="H2" text="{i18n>pdp.objCreationColab}" class="sapUiSmallMarginTop" />
+                    <MultiComboBox id="pdp-idMassObjCustColabs" items="{TeamPDP>/data}" class="sapUiTinyMarginTop sapUiSmallMarginBottom">
+                        <core:Item key="{TeamPDP>NColab} {TeamPDP>pId}" text="{TeamPDP>Nome} - {TeamPDP>Titulo}" />
+                    </MultiComboBox>
+                </l:Grid>
+                <l:Grid defaultSpan="XL6 L6 M6 S12" class="createObj">
+                    <Title level="H2" text="{i18n>pdp.objCreationIniType}" class="sapUiSmallMarginTop" />
+                    <Title level="H2" text="{i18n>pdp.objCreationRealDate}" class="sapUiSmallMarginTop" />
+                    <Select id="pdp-idMassObjSelCust" class="sapUiTinyMarginTop sapUiSmallMarginBottom" width="500px" items="{
+				        path: 'initiativeList>/',
+				        sorter: {
+					        path: 'tipo',
+					        descending: false,
+					        group: true
+				        },
+				        groupHeaderFactory: '.getGroupHeader'
+			        }">
+                        <core:Item key="{initiativeList>externalCode}" text="{initiativeList>description}" />
+                    </Select>
+                    <DatePicker id="pdp-idDatePickerCustObjMass" displayFormat="dd-MM-yyyy" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
+                </l:Grid>
+                <l:Grid defaultSpan="XL12 L12 M12 S12" class="createObj">
+                    <Title level="H2" text="{i18n>pdp.objCreationObs}" class="sapUiSmallMarginTop" />
+                    <TextArea rows="3" id="pdp-idObservCustObjMass" width="100%" value="" placeholder="{i18n>pdp.objCreationObs}" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
+                </l:Grid>
+            </VBox>
+        </Panel>
+        <buttons>
+            <Button text="{i18n>pdp.exitButtonText}" press="onExitMassObj" type="Reject" />
+            <Button text="{i18n>pdp.assignButtonText}" press="onCreateMassObj" type="Accept" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

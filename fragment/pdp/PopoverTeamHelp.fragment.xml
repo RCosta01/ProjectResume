@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Popover title="{i18n>pdp.helpText}" class="sapUiResponsivePadding--header sapUiResponsivePadding--footer" placement="Bottom">
+        <Panel>
+            <Text
+                text=""
+                width="200px"
+            />
+        </Panel>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="{i18n>pdp.closeButtonText}" press="onClosePopover" />
+            </OverflowToolbar>
+        </footer>
+    </Popover>
+</core:FragmentDefinition>

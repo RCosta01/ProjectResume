@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("projects.controller.pdp.MgrPlanPage",{onInit:function(){jQuery.sap.includeStyleSheet(sap.ui.require.toUrl("projects/css/pdp.css"))}})});
+//# sourceMappingURL=MgrPlanPage.controller.js.map

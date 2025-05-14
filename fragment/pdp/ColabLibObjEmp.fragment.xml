@@ -1,0 +1,24 @@
+<core:FragmentDefinition displayBlock="true" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" height="100%" xmlns="sap.m">
+    <Dialog busyIndicatorDelay="0" title="{i18n>pdp.addLibButtonText}" contentWidth="500px">
+        <Panel class="confirmOverallPanel sapUiSmallMarginTop">
+            <l:Grid defaultSpan="XL12 L12 M12 S12" class="createObj">
+                <Title text="{i18n>pdp.objCreationInis}" level="H2"/>
+                <!-- <Button text="Escolher objetivos" press="onPressObjectives" ariaHasPopup="Dialog"/> -->
+                <MultiInput width="100%" id="pdp-empMultiInputColab" class="sapUiTinyMarginTop sapUiSmallMarginBottom" suggestionItems="{
+				            path: '/cust_pdpLibrary',
+				            sorter: { path: 'cust_objName' }
+			            }" valueHelpRequest="handleValueHelp">
+                    <core:Item key="{externalCode}" text="{cust_objName}" />
+                </MultiInput>
+                <Title level="H2" text="{i18n>pdp.objCreationRealDate}" class="sapUiSmallMarginTop" />
+                <DatePicker id="pdp-empIdDatePickerColabLib" displayFormat="dd-MM-yyyy" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
+                <Title text="{i18n>pdp.objCreationObs}" level="H2" class="sapUiSmallMarginTop"/>
+                <TextArea rows="3" id="pdp-empColabLibObs" width="100%" value="" placeholder="{i18n>pdp.objCreationObs}" class="sapUiTinyMarginTop"/>
+            </l:Grid>
+        </Panel>
+        <buttons>
+            <Button text="{i18n>pdp.exitButtonText}" press="onExitLibObj" type="Reject" />
+            <Button text="{i18n>pdp.addButtonText}" press="onCreateLibObj" type="Accept" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

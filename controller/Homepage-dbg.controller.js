@@ -4,11 +4,13 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("projects.controller.Homepage", {
-        onInit() {
-        },
 
         onTest: function(){
             var teste = 1;
+        },
+
+        onNav: function() {
+            this.getOwnerComponent().getRouter().navTo('routePage1');
         }
     });
 });

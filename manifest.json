@@ -1,105 +1,146 @@
 {
-  "_version": "1.65.0",
-  "sap.app": {
-    "id": "projects",
-    "type": "application",
-    "i18n": {
-      "bundleUrl": "i18n/i18n.properties",
-      "supportedLocales": [
-        ""
-      ]
+    "_version": "1.65.0",
+    "sap.app": {
+        "id": "projects",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.16.3",
+            "toolsId": "58093012-eee7-4afb-a16b-147cd6254bc6"
+        }
     },
-    "applicationVersion": {
-      "version": "0.0.1"
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
     },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.16.3",
-      "toolsId": "58093012-eee7-4afb-a16b-147cd6254bc6"
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.132.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "projects.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "transition": "slide",
+                "type": "View",
+                "viewType": "XML",
+                "path": "projects.view",
+                "async": true
+            },
+            "routes": [
+                {
+                    "name": "RouteHomepage",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHomepage"
+                    ]
+                }, {
+                    "name": "routePage1",
+                    "pattern": "page1",
+                    "target": [
+                        "TargetPage1"
+                    ]
+                }, {
+                    "name": "pdpHomepage",
+                    "pattern": "/pdp/Homepage",
+                    "target": [
+                        "PDPHomepage"
+                    ]
+                }, {
+                    "name": "pdpMgrPlanPage",
+                    "pattern": "/pdp/MgrPlanPage",
+                    "target": [
+                        "PDPMgrPlanPage"
+                    ]
+                }, {
+                    "name": "pdpEmpPlanPage",
+                    "pattern": "/pdp/EmpPlanPage",
+                    "target": [
+                        "PDPEmpPlanPage"
+                    ]
+                }, {
+                    "name": "pdpVOPlanPage",
+                    "pattern": "/pdp/VOPlanPage",
+                    "target": [
+                        "PDPVOPlanPage"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetHomepage": {
+                    "id": "Homepage",
+                    "name": "Homepage"
+                },
+                "TargetPage1": {
+                    "id": "Page1",
+                    "name": "Page1"
+                },
+                "PDPHomepage": {
+                    "id": "PDPHomepage",
+                    "name": "/pdp/Homepage"
+                },
+                "PDPMgrPlanPage": {
+                    "id": "PDPMgrPlanPage",
+                    "name": "/pdp/MgrPlanPage"
+                },
+                "PDPEmpPlanPage": {
+                    "id": "PDPEmpPlanPage",
+                    "name": "/pdp/EmpPlanPage"
+                },
+                "PDPVOPlanPage": {
+                    "id": "PDPVOPlanPage",
+                    "name": "/pdp/VOPlanPage"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "projects.view.App",
+            "type": "XML",
+            "id": "App"
+        }
     }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": false,
-    "dependencies": {
-      "minUI5Version": "1.132.1",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {}
-      }
-    },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "projects.i18n.i18n",
-          "supportedLocales": [
-            ""
-          ]
-        }
-      }
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
-    },
-    "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "projects.view",
-        "async": true,
-        "viewPath": "projects.view"
-      },
-      "routes": [
-        {
-          "name": "RouteHomepage",
-          "pattern": ":?query:",
-          "target": [
-            "TargetHomepage"
-          ]
-        }
-      ],
-      "targets": {
-        "TargetHomepage": {
-          "id": "Homepage",
-          "name": "Homepage"
-        }
-      }
-    },
-    "rootView": {
-      "viewName": "projects.view.App",
-      "type": "XML",
-      "id": "App"
-    }
-  }
 }

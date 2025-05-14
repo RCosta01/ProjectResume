@@ -1,0 +1,12 @@
+<mvc:View controllerName="projects.controller.Page1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true" height="100%" busyIndicatorDelay="0">
+    <Page enableScrolling="true">
+        <VBox class="myButtonVBox">
+            <Text text="teste123" />
+            <Text text="teste456" />
+        </VBox>
+        <Text text="teste789" class="mySingleButton"/>
+    </Page>
+</mvc:View>

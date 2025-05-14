@@ -49,3 +49,44 @@
 .myAboutMeBox {
     margin: 200px 300px 200px 300px;
 }
+
+.myTestVbox {
+    border-radius: 5px;
+    background-color: white;
+    border: 4px solid yellow;
+}
+
+.myTestVbox .sapMText {
+    color: black;
+}
+
+.myCenteredVBox {
+    place-self: center;
+}
+
+.noMarginGrid.sapUiRespGrid.sapUiRespGridVSpace1 > div {
+    margin: 0;
+    padding: 0;
+}
+
+.noMarginGrid.sapUiRespGrid.sapUiRespGridHSpace1 {
+     padding: 0;
+}
+
+.myForm2 {
+    margin-left: 4.766666%
+}
+
+.myNoMarginForm .sapUiFormResGrid > div {
+    padding: 0rem 0.75rem 1rem;
+    box-sizing: border-box;
+}
+
+.myLowPaddingBottom .sapUiFormResGrid > div {
+    padding: 1rem 0.75rem 0.4rem;
+    box-sizing: border-box;
+}
+
+.myLowPaddingBottom .sapUiFormM:not(.sapUiFormEdit) > .sapUiFormResGrid > div:not(.sapMTB) {
+    padding-bottom: 0.4rem;
+}
