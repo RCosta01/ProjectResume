@@ -1038,8 +1038,6 @@ sap.ui.define([
                         }
                         this.createMassCustObj(keyDetails, model, finalModel, name, desc, obs, formTyp, date);
                     }
-                    //         var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                    //       MessageBox.success(i18n.getText("addMassObjSuccess"));
                     break;
             }
             this._massObj.close();
