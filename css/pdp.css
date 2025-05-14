@@ -327,4 +327,8 @@
     :not(.sapMBtnDisabled):not(.sapMSBActive)>span.sapMBtnInner.sapMBtnAccept:not(.sapMBtnActive):not(.sapMToggleBtnPressed)>.sapMBtnIcon :hover {
         color: white;
     }
+
+    .whiteIcon.sapUiIcon {
+        color: white
+    }
 }

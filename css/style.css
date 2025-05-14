@@ -8,14 +8,14 @@
     }
 }
 
-@media only screen and (min-width: 1024px ) and (max-width: 1919px) {
+@media only screen and (min-width: 1024px) and (max-width: 1919px) {
     .myCenterMargins {
         margin-left: 15%;
         margin-right: 15%;
     }
 }
 
-@media only screen and (min-width: 680px ) and (max-width: 1023px) {
+@media only screen and (min-width: 680px) and (max-width: 1023px) {
     .myCenterMargins {
         margin-left: 5%;
         margin-right: 5%;
@@ -34,8 +34,10 @@
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(800px); /* Start below */
+        transform: translateY(800px);
+        /* Start below */
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -64,29 +66,89 @@
     place-self: center;
 }
 
-.noMarginGrid.sapUiRespGrid.sapUiRespGridVSpace1 > div {
+.noMarginGrid.sapUiRespGrid.sapUiRespGridVSpace1>div {
     margin: 0;
     padding: 0;
 }
 
 .noMarginGrid.sapUiRespGrid.sapUiRespGridHSpace1 {
-     padding: 0;
+    padding: 0;
 }
 
 .myForm2 {
     margin-left: 4.766666%
 }
 
-.myNoMarginForm .sapUiFormResGrid > div {
+.myNoMarginForm .sapUiFormResGrid>div {
     padding: 0rem 0.75rem 1rem;
     box-sizing: border-box;
 }
 
-.myLowPaddingBottom .sapUiFormResGrid > div {
+.myLowPaddingBottom .sapUiFormResGrid>div {
     padding: 1rem 0.75rem 0.4rem;
     box-sizing: border-box;
 }
 
-.myLowPaddingBottom .sapUiFormM:not(.sapUiFormEdit) > .sapUiFormResGrid > div:not(.sapMTB) {
+.myLowPaddingBottom .sapUiFormM:not(.sapUiFormEdit)>.sapUiFormResGrid>div:not(.sapMTB) {
     padding-bottom: 0.4rem;
+}
+
+@media only screen and (min-width: 700px) {
+
+    .myPDPButton .sapMBtnInner {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+            url("../images/PDP-Homepage.png");
+        background-size: cover;
+    }
+
+    .myProjectsButton .sapMBtnInner {
+        height: 170px;
+        width: 360px;
+    }
+
+    .myProjectsButton .sapMBtnContent {
+        position: absolute;
+        bottom: 0px;
+        color: white;
+        font-size: 20px;
+    }
+
+    .myPDPButton .sapMBtnInner:hover {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+            url("../images/PDP-Homepage.png");
+        background-size: cover;
+        height: 170px;
+        width: 360px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .myPDPButton .sapMBtnInner {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+            url("../images/PDP-Homepage.png");
+        background-size: cover;
+    }
+
+    .myProjectsButton .sapMBtnInner {
+        height: 150px;
+        width: 320px;
+    }
+
+    .myProjectsButton .sapMBtnContent {
+        position: absolute;
+        bottom: 0px;
+        color: white;
+        font-size: 20px;
+    }
+
+    .myPDPButton .sapMBtnInner:hover {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+            url("../images/PDP-Homepage.png");
+        background-size: cover;
+    }
 }

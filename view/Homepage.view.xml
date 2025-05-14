@@ -47,9 +47,10 @@
                     <!--<Button text="Go to Test Page1"
                             width="150px"
                             press="onNav"/> -->
-                    <Button text="Go to PDP Project"
-                            width="150px"
-                            press="onNavPDP" />
+                    <Button text="PDP"
+                            width="360px"
+                            press="onNavPDP"
+                            class="myPDPButton myProjectsButton"/>
                     <!--<Button text="Teste"
                             width="150px" /> -->
                 </HBox>
@@ -60,9 +61,10 @@
                 <!--<Button text="Go to Test Page1"
                         width="150px"
                         press="onNav" /> -->
-                <Button text="Go to PDP Project"
-                        width="150px"
-                        press="onNavPDP" />
+                <Button text="PDP"
+                    width="320px"
+                    press="onNavPDP"
+                    class="myPDPButton myProjectsButton"/>
                 <!--<Button text="Teste"
                         width="150px" /> -->
             </VBox>

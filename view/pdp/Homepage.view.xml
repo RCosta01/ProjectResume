@@ -15,11 +15,11 @@
             <VBox>
                 <OverflowToolbar class="headerColor headerSize">
                     <Button text="" press=".onNavBack" type="Back" class="colorButtonInner" />
-                    <Image src="./images/logo-nos-white.png" width="12%" />
+                    <core:Icon src="sap-icon://sap-ui5" size="30px" class="whiteIcon"/>
                     <Title text="{i18n>pdp.title}" level="H1" class="headerTextColor headerTextSize" />
                     <ToolbarSpacer />
                     <core:Icon src="sap-icon://customer" class="headerTextColor" />
-                    <Label class="sapUiSmallMarginEnd headerTextColor" text="{userInfo>/cname}" />
+                    <Label class="sapUiSmallMarginEnd headerTextColor" text="Brandon Murray" />
                     <Button text="{i18n>pdp.appLogout}" press="onLogout" class="colorButtonInner" />
                 </OverflowToolbar>
             </VBox>
