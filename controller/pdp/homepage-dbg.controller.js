@@ -21,10 +21,16 @@ sap.ui.define([
     return Controller.extend("projects.controller.pdp.homepage", {
         formatter: formatter,
         onInit: function () {
-            jQuery.sap.includeStyleSheet(
-                sap.ui.require.toUrl("projects/css/pdp.css")
-            );
-            sap.ui.getCore().applyTheme("sap_horizon");
+            this._pdpStyleId = "pdp-css";
+
+            if (!document.getElementById(this._pdpStyleId)) {
+                const link = document.createElement("link");
+                link.id = this._pdpStyleId;
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = sap.ui.require.toUrl("projects/css/pdp.css");
+                document.head.appendChild(link);
+            }
             this._setTeamModel();
             this._setTeamPDPs()
             this._setSmallerModels();
@@ -37,6 +43,13 @@ sap.ui.define([
 
             //this.startFilterBar();
             var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.getRoute("pdpHomepage").attachMatched(function (oEvent) {
+                sap.ui.getCore().applyTheme("sap_horizon");
+            }, this);
+        },
+
+        onNavBack: function() {
+            this.getOwnerComponent().getRouter().navTo("RouteHomepage")
         },
 
         _setTeamModel: function () {

@@ -96,28 +96,28 @@
         },
         {
           "name": "pdpHomepage",
-          "pattern": "/pdp/Homepage",
+          "pattern": "pdp/Homepage",
           "target": [
             "PDPHomepage"
           ]
         },
         {
           "name": "pdpMgrPlanPage",
-          "pattern": "/pdp/MgrPlanPage",
+          "pattern": "pdp/MgrPlanPage",
           "target": [
             "PDPMgrPlanPage"
           ]
         },
         {
           "name": "pdpEmpPlanPage",
-          "pattern": "/pdp/EmpPlanPage",
+          "pattern": "pdp/EmpPlanPage",
           "target": [
             "PDPEmpPlanPage"
           ]
         },
         {
           "name": "pdpVOPlanPage",
-          "pattern": "/pdp/VOPlanPage",
+          "pattern": "pdp/VOPlanPage",
           "target": [
             "PDPVOPlanPage"
           ]
@@ -130,7 +130,7 @@
         },
         "TargetPage1": {
           "id": "Page1",
-          "name": "Page1"
+          "name": "page1"
         },
         "PDPHomepage": {
           "id": "PDPHomepage",

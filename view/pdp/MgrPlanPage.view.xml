@@ -7,6 +7,7 @@
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
+    class="pdpPage"
 >
 <Page id="pdp-mgrPlan" busyIndicatorDelay="0" busy="true" title="{i18n>pdp.title}" showHeader="false">
         <content>

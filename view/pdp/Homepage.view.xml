@@ -8,11 +8,13 @@
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
+    class="pdpPage"
 >
 <Page busyIndicatorDelay="0" id="pdp-page" title="{i18n>pdp.title}" showHeader="false">
         <content>
             <VBox>
                 <OverflowToolbar class="headerColor headerSize">
+                    <Button text="" press=".onNavBack" type="Back" class="colorButtonInner" />
                     <Image src="./images/logo-nos-white.png" width="12%" />
                     <Title text="{i18n>pdp.title}" level="H1" class="headerTextColor headerTextSize" />
                     <ToolbarSpacer />

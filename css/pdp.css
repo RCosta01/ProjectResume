@@ -1,317 +1,330 @@
 /* PDP */
-
-.headerToolbar .sapMTB {
-    height: 3rem;
-}
-
-.mytable {
-    padding: 25px;
-}
-
-.mytitlefontsize{
-    font-size: 14px !important;
-}
-
-.mydepfontsize{
-    font-size: 12px !important;
-}
-
-.mylist {
-    padding: 25px 0px 25px 25px;
-}
-
-.noPadding{
-    padding: 0rem, 0rem, 0rem, 0rem !important;
-}
-
-.sapMOHRTitleNumberDiv {
-    display: contents;
-    max-width: 95rem;
-    width: 100%;
-}
-
-.marginTop {
-    margin-top: 1rem;
-}
-
-.alignRight {
-    text-align: right;
-}
-
-.sapMOHRStatesCont1, .sapMOHRStatesCont2, .sapMOHRStatesCont3, .sapMOHRStatesCont4 {
-    float: right;
-}
-
-.sapMOHRStates {
-    display: initial;
-    vertical-align: top;
-    padding-top: 0.5rem;
-    width: 100%;
-    max-width: 95rem;
-}
-
-.cross {
-    text-decoration: line-through;
-}
-
-.greyBackground {
-    background-color: gainsboro;
-}
-
-.headerSize {
-    height: 3.6rem !important;
-}
-
-.toolbarSize {
-    height: 2.75rem !important;
-}
-
-.actionButtons {
-    height: 1.5rem !important;
-}
-
-.headerToolbarPadding {
-    padding: 0 0.5rem 0 0.75rem!important;
-}
-
-.paddingBegEnd {
-    padding: 0.1875rem 1rem !important;
-}
-
-.paddingBottom {
-    padding-bottom: 1rem;
-}
-
-.sapMListTblCell .sapMLnk, .sapMListTblCell .sapMText, .sapMListTblCell .sapMLabel, .sapMListTblCell .sapMObjectNumber, .sapMListTblCell .sapMObjectIdentifier, .sapMListTblCell .sapMObjStatus {
-    line-height: 1rem;
-}
-
-.createObj.sapUiRespGrid.sapUiRespGridVSpace1>div {
-    margin-bottom: 0rem;
-}
-
-.strengthsPadding.sapUiRespGrid.sapUiRespGridHSpace1 {
-    padding: 0 0.9rem;
-}
-
-@media only screen and (max-width: 768px) {
-    .mylist {
-        padding: 10px;
+.pdpPage {
+    .headerToolbar .sapMTB {
+        height: 3rem;
     }
 
     .mytable {
-        padding: 10px;
+        padding: 25px;
     }
-    
-    .strengthsPadding.sapUiRespGrid.sapUiRespGridHSpace1 {
-        padding: 0;
-    }
-}
 
-@media only screen and (max-width: 1024px) {
+    .mytitlefontsize {
+        font-size: 14px !important;
+    }
+
+    .mydepfontsize {
+        font-size: 12px !important;
+    }
+
     .mylist {
-        padding: 15px;
+        padding: 25px 0px 25px 25px;
     }
 
-    .mytable {
-        padding: 15px;
+    .noPadding {
+        padding: 0rem, 0rem, 0rem, 0rem !important;
+    }
+
+    .sapMOHRTitleNumberDiv {
+        display: contents;
+        max-width: 95rem;
+        width: 100%;
+    }
+
+    .marginTop {
+        margin-top: 1rem;
+    }
+
+    .alignRight {
+        text-align: right;
+    }
+
+    .sapMOHRStatesCont1,
+    .sapMOHRStatesCont2,
+    .sapMOHRStatesCont3,
+    .sapMOHRStatesCont4 {
+        float: right;
+    }
+
+    .sapMOHRStates {
+        display: initial;
+        vertical-align: top;
+        padding-top: 0.5rem;
+        width: 100%;
+        max-width: 95rem;
+    }
+
+    .cross {
+        text-decoration: line-through;
+    }
+
+    .greyBackground {
+        background-color: gainsboro;
+    }
+
+    .headerSize {
+        height: 3.6rem !important;
+    }
+
+    .toolbarSize {
+        height: 2.75rem !important;
+    }
+
+    .actionButtons {
+        height: 1.5rem !important;
+    }
+
+    .headerToolbarPadding {
+        padding: 0 0.5rem 0 0.75rem !important;
+    }
+
+    .paddingBegEnd {
+        padding: 0.1875rem 1rem !important;
+    }
+
+    .paddingBottom {
+        padding-bottom: 1rem;
+    }
+
+    .sapMListTblCell .sapMLnk,
+    .sapMListTblCell .sapMText,
+    .sapMListTblCell .sapMLabel,
+    .sapMListTblCell .sapMObjectNumber,
+    .sapMListTblCell .sapMObjectIdentifier,
+    .sapMListTblCell .sapMObjStatus {
+        line-height: 1rem;
+    }
+
+    .createObj.sapUiRespGrid.sapUiRespGridVSpace1>div {
+        margin-bottom: 0rem;
     }
 
     .strengthsPadding.sapUiRespGrid.sapUiRespGridHSpace1 {
-        padding: 0;
+        padding: 0 0.9rem;
     }
-}
 
-.sapMSlt.sapMSltReadonly {
-    background: transparent;
-    border-bottom: 0rem;
-}
+    @media only screen and (max-width: 768px) {
+        .mylist {
+            padding: 10px;
+        }
 
-.sapMInputBaseReadonly .sapMInputBaseContentWrapper {
-    border-color: #556b81;
-    background-color: transparent;
-    border-bottom: 0rem;
-    background: 0rem;
-}
+        .mytable {
+            padding: 10px;
+        }
 
-.sapMTextNoWrap {
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-wrap: break-word;
-}
+        .strengthsPadding.sapUiRespGrid.sapUiRespGridHSpace1 {
+            padding: 0;
+        }
+    }
 
-.sapMOHRTwoCols.sapMOHRStatesCont1 {
-    padding-right: 0rem;
-}
+    @media only screen and (max-width: 1024px) {
+        .mylist {
+            padding: 15px;
+        }
 
-.sapMOHR .sapMOHRAttr .sapMObjectAttributeTitle, .sapMOHR .sapMOHRAttr .sapMObjectAttributeText {
-    display: inline-block;
-    font-family: "72","72full",Arial,Helvetica,sans-serif;
-    font-size: 1rem;
-    font-weight: normal;
-    color: #556b82;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 50%;
-    vertical-align: top;
-}
+        .mytable {
+            padding: 15px;
+        }
 
-.headerTextColor {
-    color: white;
-}
+        .strengthsPadding.sapUiRespGrid.sapUiRespGridHSpace1 {
+            padding: 0;
+        }
+    }
 
-.bold {
-    font-weight: bold;
-}
+    .sapMSlt.sapMSltReadonly {
+        background: transparent;
+        border-bottom: 0rem;
+    }
 
-.sapMObjStatusWarning .sapMObjStatusText {
-    color: orange;
-}
+    .sapMInputBaseReadonly .sapMInputBaseContentWrapper {
+        border-color: #556b81;
+        background-color: transparent;
+        border-bottom: 0rem;
+        background: 0rem;
+    }
 
-.headerColor {
-    background: #4BDBC5;
-}
+    .sapMTextNoWrap {
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-wrap: break-word;
+    }
 
-.colorButtonInner .sapMBtnInner  {
-    color: white !important;
-}
+    .sapMOHRTwoCols.sapMOHRStatesCont1 {
+        padding-right: 0rem;
+    }
 
-.colorButtonInner .sapMBtnInner:hover  {
-    color: black !important;
-}
+    .sapMOHR .sapMOHRAttr .sapMObjectAttributeTitle,
+    .sapMOHR .sapMOHRAttr .sapMObjectAttributeText {
+        display: inline-block;
+        font-family: "72", "72full", Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #556b82;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 50%;
+        vertical-align: top;
+    }
 
-.addButtonsColor .sapMBtnInner  {
-    color: white !important;
-    background: #4BDBC5 !important;
-}
+    .headerTextColor {
+        color: white;
+    }
 
-.addButtonsColor .sapMBtnInner:hover  {
-    color: #4BDBC5 !important;
-    background: white !important;
-}
+    .bold {
+        font-weight: bold;
+    }
 
-.addButtonsColor .sapMBtnInner.sapMBtnText .sapMBtnIcon {
-    width: 1rem;
-    min-width: 1rem;
-    padding-right: 0.375rem;
-    text-align: center;
-    color: white !important;
-}
+    .sapMObjStatusWarning .sapMObjStatusText {
+        color: orange;
+    }
 
-.footerButtonsColor .sapMBtnInner.sapMBtnText .sapMBtnIcon {
-    width: 1rem;
-    min-width: 1rem;
-    padding-right: 0.375rem;
-    text-align: center;
-    color: black !important;
-}
+    .headerColor {
+        background: #4BDBC5;
+    }
 
-.footerButtonsColor:hover .sapMBtnInner.sapMBtnText .sapMBtnIcon {
-    width: 1rem;
-    min-width: 1rem;
-    padding-right: 0.375rem;
-    text-align: center;
-    color: #4BDBC5 !important;
-}
+    .colorButtonInner .sapMBtnInner {
+        color: white !important;
+    }
 
-.footerButtonsColor .sapMBtnInner  {
-    color: black !important;
-    background: white !important;
-    font-size: 1rem;
-}
+    .colorButtonInner .sapMBtnInner:hover {
+        color: black !important;
+    }
 
-.iconColor .sapMBtn .sapMBtnIcon {
-    cursor: inherit;
-    color: black !important;
-}
+    .addButtonsColor .sapMBtnInner {
+        color: white !important;
+        background: #4BDBC5 !important;
+    }
 
-.headerTextSize{
-    font-size: 1.2rem;
-}
+    .addButtonsColor .sapMBtnInner:hover {
+        color: #4BDBC5 !important;
+        background: white !important;
+    }
 
-:not(.sapMBtnDisabled) .sapMBtnBack>.sapMBtnIcon, :not(.sapMBtnDisabled) .sapMBtnTransparent>.sapMBtnIcon {
-    color: white;
-}
+    .addButtonsColor .sapMBtnInner.sapMBtnText .sapMBtnIcon {
+        width: 1rem;
+        min-width: 1rem;
+        padding-right: 0.375rem;
+        text-align: center;
+        color: white !important;
+    }
 
-:not(.sapMBtnDisabled) .sapMBtnBack>.sapMBtnIcon, :not(.sapMBtnDisabled) .sapMBtnTransparent>.sapMBtnIcon:hover {
-    color: white;
-    background: transparent;
-}
+    .footerButtonsColor .sapMBtnInner.sapMBtnText .sapMBtnIcon {
+        width: 1rem;
+        min-width: 1rem;
+        padding-right: 0.375rem;
+        text-align: center;
+        color: black !important;
+    }
 
-.mySubmitButton .sapMBtnInner {
-    background-color: #4BDBC5 !important;
-    border-color: #4BDBC5 !important;
-    color: white !important;
-}
+    .footerButtonsColor:hover .sapMBtnInner.sapMBtnText .sapMBtnIcon {
+        width: 1rem;
+        min-width: 1rem;
+        padding-right: 0.375rem;
+        text-align: center;
+        color: #4BDBC5 !important;
+    }
 
-.mySubmitButton:hover .sapMBtnInner {
-    color: black !important;
-}
+    .footerButtonsColor .sapMBtnInner {
+        color: black !important;
+        background: white !important;
+        font-size: 1rem;
+    }
 
-.mySubmitButton:hover .sapMBtnInner {
-    color: black;
-}
+    .iconColor .sapMBtn .sapMBtnIcon {
+        cursor: inherit;
+        color: black !important;
+    }
 
-.mySubmitButton .sapMBtnInner.sapMBtnText .sapMBtnIcon {
-    color: white !important;
-}
+    .headerTextSize {
+        font-size: 1.2rem;
+    }
 
-.mySubmitButton:hover .sapMBtnInner.sapMBtnText .sapMBtnIcon {
-    color: black !important;
-}
+    :not(.sapMBtnDisabled) .sapMBtnBack>.sapMBtnIcon,
+    :not(.sapMBtnDisabled) .sapMBtnTransparent>.sapMBtnIcon {
+        color: white;
+    }
 
-.mySubmitButton2 .sapMBtnInner.sapMBtnEmphasized {
-    background-color: #4BDBC5 !important;
-    border-color: #4BDBC5 !important;
-    color: white !important;
-}
+    :not(.sapMBtnDisabled) .sapMBtnBack>.sapMBtnIcon,
+    :not(.sapMBtnDisabled) .sapMBtnTransparent>.sapMBtnIcon:hover {
+        color: white;
+        background: transparent;
+    }
 
-.mySubmitButton2 .sapMBtnInner {
-    color: black !important;
-}
+    .mySubmitButton .sapMBtnInner {
+        background-color: #4BDBC5 !important;
+        border-color: #4BDBC5 !important;
+        color: white !important;
+    }
 
-.mySubmitButton2 .sapMBtnInner.sapMBtnEmphasized:hover {
-    color: black !important;
-}
+    .mySubmitButton:hover .sapMBtnInner {
+        color: black !important;
+    }
 
-.mySubmitButton2 .sapMBtnInner.sapMBtnEmphasized:hover {
-    color: black;
-}
+    .mySubmitButton:hover .sapMBtnInner {
+        color: black;
+    }
 
-.mySubmitButton2 .sapMBtnInner.sapMBtnText .sapMBtnIcon {
-    color: white !important;
-}
+    .mySubmitButton .sapMBtnInner.sapMBtnText .sapMBtnIcon {
+        color: white !important;
+    }
 
-.mySubmitButton2 .sapMBtnInner.sapMBtnText:hover .sapMBtnIcon {
-    color: black !important;
-}
+    .mySubmitButton:hover .sapMBtnInner.sapMBtnText .sapMBtnIcon {
+        color: black !important;
+    }
 
-.homepageButtonColor.sapMBtn .sapMBtnIcon {
-    color: #4BDBC5 !important;
-    cursor: inherit;
-}
+    .mySubmitButton2 .sapMBtnInner.sapMBtnEmphasized {
+        background-color: #4BDBC5 !important;
+        border-color: #4BDBC5 !important;
+        color: white !important;
+    }
 
-.sapMBtn:hover>.sapMBtnBack.sapMBtnHoverable {
-    background-color: transparent;
-}
+    .mySubmitButton2 .sapMBtnInner {
+        color: black !important;
+    }
 
-.sapMIBar .sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive)>.sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnDefault .sapUiIcon, .sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive)>.sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnBack .sapUiIcon {
-    color: black;
-}
+    .mySubmitButton2 .sapMBtnInner.sapMBtnEmphasized:hover {
+        color: black !important;
+    }
 
-html.sap-desktop .sapMBtn:focus > .sapMFocusable:not(.sapMBadgeIndicator)::before {
-    border: none;
-}
+    .mySubmitButton2 .sapMBtnInner.sapMBtnEmphasized:hover {
+        color: black;
+    }
 
-.sapUiLocalBusyIndicatorAnimation>div::before {
-    background: #4BDBC5;
-}
+    .mySubmitButton2 .sapMBtnInner.sapMBtnText .sapMBtnIcon {
+        color: white !important;
+    }
 
-.sapUiLocalBusyIndicatorAnimation>div::after {
-    box-shadow: inset 0 0 2px 1px #4BDBC5;
-}
+    .mySubmitButton2 .sapMBtnInner.sapMBtnText:hover .sapMBtnIcon {
+        color: black !important;
+    }
 
-:not(.sapMBtnDisabled):not(.sapMSBActive)>span.sapMBtnInner.sapMBtnAccept:not(.sapMBtnActive):not(.sapMToggleBtnPressed)>.sapMBtnIcon :hover {
-    color: white;
+    .homepageButtonColor.sapMBtn .sapMBtnIcon {
+        color: #4BDBC5 !important;
+        cursor: inherit;
+    }
+
+    .sapMBtn:hover>.sapMBtnBack.sapMBtnHoverable {
+        background-color: transparent;
+    }
+
+    .sapMIBar .sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive)>.sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnDefault .sapUiIcon,
+    .sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive)>.sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnBack .sapUiIcon {
+        color: black;
+    }
+
+    html.sap-desktop .sapMBtn:focus>.sapMFocusable:not(.sapMBadgeIndicator)::before {
+        border: none;
+    }
+
+    .sapUiLocalBusyIndicatorAnimation>div::before {
+        background: #4BDBC5;
+    }
+
+    .sapUiLocalBusyIndicatorAnimation>div::after {
+        box-shadow: inset 0 0 2px 1px #4BDBC5;
+    }
+
+    :not(.sapMBtnDisabled):not(.sapMSBActive)>span.sapMBtnInner.sapMBtnAccept:not(.sapMBtnActive):not(.sapMToggleBtnPressed)>.sapMBtnIcon :hover {
+        color: white;
+    }
 }

@@ -6,5 +6,6 @@
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
+    class="pdpPage"
 >
 </mvc:View>

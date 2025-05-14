@@ -44,25 +44,27 @@
                   visible="{= !${device>/system/phone} }">
                 <HBox justifyContent="SpaceBetween"
                       class="myCenterMargins">
-                    <Button text="Teste"
-                            width="100px" 
+                    <Button text="Go to Test Page1"
+                            width="150px"
                             press="onNav"/>
+                    <Button text="Go to PDP Project"
+                            width="150px"
+                            press="onNavPDP" />
                     <Button text="Teste"
-                            width="100px" />
-                    <Button text="Teste"
-                            width="100px" />
+                            width="150px" />
                 </HBox>
             </VBox>
             <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
                   visible="{device>/system/phone}">
-                <Button text="Teste"
-                        width="100px"
+                <Button text="Go to Test Page1"
+                        width="150px"
                         press="onNav" />
+                <Button text="Go to PDP Project"
+                        width="150px"
+                        press="onNavPDP" />
                 <Button text="Teste"
-                        width="100px" />
-                <Button text="Teste"
-                        width="100px" />
+                        width="150px" />
             </VBox>
 
             <VBox class="myTestVbox" width="100px"  alignItems="Center" justifyContent="Center">
