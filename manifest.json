@@ -134,19 +134,19 @@
         },
         "PDPHomepage": {
           "id": "PDPHomepage",
-          "name": "/pdp/homepage"
+          "name": "pdp/homepage"
         },
         "PDPMgrPlanPage": {
           "id": "PDPMgrPlanPage",
-          "name": "/pdp/MgrPlanPage"
+          "name": "pdp/MgrPlanPage"
         },
         "PDPEmpPlanPage": {
           "id": "PDPEmpPlanPage",
-          "name": "/pdp/EmpPlanPage"
+          "name": "pdp/EmpPlanPage"
         },
         "PDPVOPlanPage": {
           "id": "PDPVOPlanPage",
-          "name": "/pdp/VOPlanPage"
+          "name": "pdp/VOPlanPage"
         }
       }
     },
