@@ -37,18 +37,18 @@ sap.ui.define([
             this._setPersonalPDPs();
             this._setInitiatives();
             this._setTeamPDPModels();
+            this._startFilterBar();
             this._teamPDPData = [];
             this._i18n = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             this._opened = [];
 
-            //this.startFilterBar();
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("pdpHomepage").attachMatched(function (oEvent) {
                 sap.ui.getCore().applyTheme("sap_horizon");
             }, this);
         },
 
-        onNavBack: function() {
+        onNavBack: function () {
             this.getOwnerComponent().getRouter().navTo("RouteHomepage")
         },
 
@@ -203,7 +203,7 @@ sap.ui.define([
             this.getView().setModel(new JSONModel(data), "PersonalPDP")
         },
 
-        _setInitiatives: function() {
+        _setInitiatives: function () {
             const libraryObjectives = [
                 {
                     cust_objLibraryId: '896166',
@@ -256,7 +256,7 @@ sap.ui.define([
             this.getView().setModel(new JSONModel(iniTypes), 'initiativeList')
         },
 
-        _setTeamPDPModels: function() {
+        _setTeamPDPModels: function () {
 
             const objTab = [
                 {
@@ -423,94 +423,8 @@ sap.ui.define([
             this.getOwnerComponent().setModel(new JSONModel(pdpConfigData), "pdpConfigData")
         },
 
-        getDataIntoModels: function (userId) {
-            this._uId = userId;
-            var that = this;
-            var model = this.getView().getModel();
-
-            var entity = "/User(\'" + userId + "\')";
-            model.read(entity, {
-                urlParameters: {
-                    "$select": "userId,empId,custom04",
-                    "operation": "getSFUser"
-                },
-                groupId: "group1"
-            });
-            model.read("/cust_pdpConfig", {
-                urlParameters: {
-                    "$orderby": "cust_pdpInitialDate desc",
-                    "operation": "getPersPDPConfig"
-                },
-                groupId: "group1"
-            });
-
-            model.submitChanges({
-                groupId: "group1",
-                success: function (response) {
-                    var data = response.__batchResponses;
-                    that.setUserInfo(data[0].data);
-                    that.setPDPModel(data[1].data);
-                    that.updateTree(that._uId);
-                }
-            })
-        },
-
-        setPDPModel: function (oData) {
-            var oJsonModel = new JSONModel(oData.results);
-            this.getOwnerComponent().setModel(oJsonModel, "pdpConfigData");
-        },
-
-        setUserInfo: function (oData) {
-            var oUser = {
-                userId: oData.userId,
-                empId: oData.empId,
-                cname: oData.custom04
-            };
-
-            var oModel = new JSONModel(oUser);
-            this.getOwnerComponent().setModel(oModel, "userInfo");
-        },
-
         onFinishPersPDPUpdate: function () {
             this.byId("pdp-PersPDP").setBusy(false);
-        },
-
-        setPersonalPDP: function (oData) {
-            var that = this;
-            var filters = "cust_empId eq '" + this._uId + "'"
-            this.getView().getModel().read("/cust_pdpEmployees", {
-                urlParameters: {
-                    "$filter": filters,
-                    "operation": "getPersPDP"
-                },
-                success: function (oData2) {
-                    var oJsonModel = new JSONModel({
-                        data: []
-                    });
-                    that._personalPDP = [];
-                    for (var i = 0; i < oData2.results.length; i++) {
-                        that._personalPDP.push(oData2.results[i]);
-                        var pdp = {
-                            "Titulo": "",
-                            "DatadeInicio": "",
-                            "EndDate": "",
-                            "Status": oData2.results[i].cust_empStatus,
-                            "pId": ""
-                        };
-                        for (var j = 0; j < oData.length; j++) {
-                            if (oData2.results[i].cust_pdpConfig_cust_pdpId === oData[j].cust_pdpId) {
-                                pdp.Titulo = oData[j].cust_pdpName;
-                                pdp.DatadeInicio = oData[j].cust_pdpInitialDate;
-                                pdp.EndDate = oData[j].cust_pdpEndDate;
-                                pdp.pId = oData[j].cust_pdpId;
-                                oJsonModel.oData.data.push(pdp);
-                                break;
-                            }
-                        }
-                    }
-                    that.getOwnerComponent().setModel(oJsonModel, "PersonalPDP");
-                }
-            });
         },
 
         onLogout: function () {
@@ -577,9 +491,9 @@ sap.ui.define([
             this.byId("pdp-page").setBusy(true);
             var that = this;
             var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-            MessageBox.confirm(i18n.getText("exportConfirm"), {
-                actions: [i18n.getText("buttonConfirmText"), MessageBox.Action.CANCEL],
-                emphasizedAction: i18n.getText("buttonConfirmText"),
+            MessageBox.confirm(i18n.getText("pdp.exportConfirm"), {
+                actions: [i18n.getText("pdp.buttonConfirmText"), MessageBox.Action.CANCEL],
+                emphasizedAction: i18n.getText("pdp.buttonConfirmText"),
                 styleClass: "mySubmitButton2",
                 onClose: function (sAction) {
                     if (sAction === this.actions[0]) {
@@ -683,14 +597,12 @@ sap.ui.define([
             this.getView().byId("pdp-chefiaTable").getBinding("items").filter(filters);
         },
 
-        startFilterBar: function () {
+        _startFilterBar: function () {
             var i18n = this.getOwnerComponent().getModel("i18n").getResourceBundle();
             var bar = this.getView().byId("pdp-filterBar");
             bar.addEventDelegate({
                 "onAfterRendering": function (oEvent) {
-                    var oButton = oEvent.srcControl._oSearchButton;
-                    //oButton.setText(i18n.getText("filterButtonText"));
-                    oButton.setVisible(false);
+                    var oButton = oEvent.srcControl._getSearchButton().setVisible(false);
                 }
             });
         },
@@ -728,128 +640,6 @@ sap.ui.define([
             this.getView().byId("pdp-chefiaTable").getBinding("items").filter(filters);
         },
 
-        onToggleOpenState: function (oEvent) {
-            var oItemContext = oEvent.getParameter("itemContext");
-            var iItemIndex = oEvent.getParameter("itemIndex");
-            var bExpanded = oEvent.getParameter("expanded");
-            if (bExpanded) {
-                var sPath = oItemContext.getPath();
-                for (var i = 0; i < this._opened.length; i++) {
-                    if (sPath === this._opened[i]) {
-                        return;
-                    }
-                }
-                this._opened.push(sPath);
-                this.byId("pdp-myTeam").getAggregation("items")[iItemIndex].setBusy(true);
-                this.fetchNewTree(sPath, iItemIndex);
-            }
-        },
-
-        fetchNewTree: function (sPath, iItemIndex) {
-            var that = this;
-            var path = sPath + "/directReports"
-            this.getView().getModel().read(path, {
-                urlParameters: {
-                    "$select": 'userId',
-                    "operation": "getUserVO"
-                },
-                success: function (oData) {
-                    if (oData.results.length === 0) {
-                        that.byId("pdp-myTeam").getAggregation("items")[iItemIndex].setBusy(false);
-                    }
-                    var idList = [];
-                    for (var i = 0; i < oData.results.length; i++) {
-                        idList.push(oData.results[i].userId);
-                    }
-                    that.addToModel(idList);
-                },
-                error: function (response) {
-                    var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                    MessageBox.error(response.message + i18n.getText("statusCode") + response.statusCode + " " + response.responseText);
-                    that.byId("pdp-page").setBusy(false);
-                }
-            })
-        },
-
-        //addToModelRefresh recebe items da árvore, addToModel recebe uma lista de user ids
-        addToModel: function (items) {
-            var that = this;
-            var model = this.getView().getModel();
-
-            if (items.length > 0) {
-                for (var i = 0; i < items.length; i++) {
-                    var filters = "cust_empId eq '" + items[i] + "'"
-                    model.read("/cust_pdpEmployees", {
-                        urlParameters: {
-                            "$filter": filters,
-                            "operation": "getEmployeesToModel"
-                        },
-                        groupId: "group1"
-                    });
-                }
-                model.submitChanges({
-                    groupId: "group1",
-                    success: function (response) {
-                        var data = response.__batchResponses;
-                        var pdps = that.getOwnerComponent().getModel("pdpConfigData").oData
-                        //iterar users diferentes
-                        for (var j = 0; j < data.length; j++) {
-                            var emp = data[j].data.results;
-                            that._teamPDPData.push(emp);
-                            //iterar pdps associados a cada user
-                            for (var k = 0; k < emp.length; k++) {
-                                var token = 0;
-                                if (that._directReports !== undefined) {
-                                    if (!that._directReports.includes(emp[k].cust_empId) && emp[k].cust_empStatus !== "3") {
-                                        token = 1;
-                                    }
-                                }
-                                if (token === 0) {
-                                    var pdp = {
-                                        "Titulo": "",
-                                        "Nome": "",
-                                        "pId": "",
-                                        "NColab": "",
-                                        "DatadeInicio": "",
-                                        "EndDate": "",
-                                        "Status": "",
-                                        "cust_pdpMaxObj": "",
-                                        "cust_pdpMinObj": ""
-                                    }
-                                    for (var i = 0; i < pdps.length; i++) {
-                                        //verificar se este pdpConfig é o correto
-                                        if (pdps[i].cust_pdpId === emp[k].cust_pdpConfig_cust_pdpId) {
-                                            pdp.Titulo = pdps[i].cust_pdpName;
-                                            pdp.Nome = emp[k].cust_empName;
-                                            pdp.pId = pdps[i].cust_pdpId;
-                                            pdp.NColab = emp[k].cust_empId;
-                                            pdp.DatadeInicio = pdps[i].cust_pdpInitialDate;
-                                            pdp.EndDate = pdps[i].cust_pdpEndDate;
-                                            pdp.Status = emp[k].cust_empStatus;
-                                            pdp.cust_pdpMaxObj = pdps[i].cust_pdpMaxObj;
-                                            pdp.cust_pdpMinObj = pdps[i].cust_pdpMinObj;
-                                            var model = that.getView().getModel("TeamPDP");
-                                            var modData = model.getData();
-                                            modData.data.push(pdp);
-                                            model.setData(modData);
-                                            that.getOwnerComponent().setModel(model, "TeamPDP");
-                                            break; //break para não iterar sobre o resto dos pdpConfigs
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        that.byId("pdp-chefiaTable").setBusy(false);
-                    },
-                    error: function (response) {
-                        var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                        MessageBox.error(response.message + i18n.getText("statusCode") + response.statusCode + " " + response.responseText);
-                        that.byId("pdp-page").setBusy(false);
-                    }
-                })
-            }
-        },
-
         onNavEmpPlan: function (oEvent) {
             var item = oEvent.getSource().getBindingContext("PersonalPDP").getPath().split('/')[2];
             var model = this.getView().getModel("PersonalPDP").getData().data[item];
@@ -866,82 +656,25 @@ sap.ui.define([
         },
 
         onOpenPlan: function (oEvent) {
-            var item = oEvent.getSource().getBindingContext("TeamPDP").getPath().split('/')[2];
-            var model = this.getView().getModel("TeamPDP").getData().data[item];
-            for (var i = 0; i < this._teamPDPData.length; i++) {
-                if (this._teamPDPData[i].length > 0) {
-                    if (this._teamPDPData[i][0].cust_empId === model.NColab) {
-                        var pdps = this._teamPDPData[i];
-                        break;
-                    }
-                }
-            }
-            // var pdps = this._teamPDPData.find(item => item[0].cust_empId === model.NColab);
-            var sPdp = pdps.find(token => token.cust_pdpConfig_cust_pdpId === model.pId);
-            var cname = model.Nome
-            var pId = model.pId;
-            var uId = model.NColab;
+            var item = oEvent.getSource().getBindingContext("TeamPDP").getProperty();
+            var cname = item.Nome
+            var pId = item.pId;
+            var uId = item.NColab;
             var data = {
                 pId: pId,
                 uId: uId,
-                pdps: pdps,
-                sPdp: sPdp,
+                pdps: item,
                 cname: cname
             }
             var oJsonModel = new JSONModel(data);
             this.getOwnerComponent().setModel(oJsonModel, "routingInfo");
-            for (var i = 0; i < this._directReports.length; i++) {
-                if (this._directReports[i] === uId) {
-                    this.getOwnerComponent().getRouter().navTo("RouteMgrPlanPage", {
-                        uId: window.encodeURIComponent(uId),
-                        pId: window.encodeURIComponent(pId)
-                    });
-                    return;
-                }
+            const teamsData = this.getView().getModel("teamsModel").getData()
+            const found = teamsData.find((item) => item.key === uId)
+            if (found) {
+                this.getOwnerComponent().getRouter().navTo("pdpMgrPlanPage");
+                return;
             }
-            this.getOwnerComponent().getRouter().navTo("RouteViewOnlyPlanPage");
-        },
-
-        onStartPicklist: function (picklistName, modelName) {
-            var that = this;
-            for (var i = 0; i < picklistName.length; i++) {
-                var entity = "/PickListV2";
-                var sFilter = "id eq '" + picklistName[i] + "'";
-                this.getOwnerComponent().getModel().read(entity, {
-                    groupId: "group1",
-                    urlParameters: {
-                        "$filter": sFilter,
-                        "$expand": "values",
-                        "operation": "getPicklist"
-                    }
-                });
-            }
-            this.getOwnerComponent().getModel().submitChanges({
-                groupId: "group1",
-                success: function (oData) {
-                    var data = oData.__batchResponses
-                    for (var j = 0; j < data.length; j++) {
-                        var records = [];
-                        var sLabel = "label_" + sap.ui.getCore().getConfiguration().getLanguage();
-                        sLabel = sLabel.replace('-', '_');
-                        if (data[j].data.results[0].values.results[0][sLabel] === null || data[j].data.results[0].values.results[0][sLabel] === undefined) {
-                            sLabel = "label_defaultValue";
-                        }
-                        for (var k = 0; k < data[j].data.results[0].values.results.length; k++) {
-                            var obj = {
-                                optionId: data[j].data.results[0].values.results[k].optionId,
-                                externalCode: data[j].data.results[0].values.results[k].externalCode,
-                                description: data[j].data.results[0].values.results[k][sLabel]
-                            };
-                            records.push(obj);
-                        }
-                        var oJModel = new JSONModel(records);
-                        oJModel.setSizeLimit(records.length);
-                        that.getOwnerComponent().setModel(oJModel, modelName[j]);
-                    }
-                }
-            });
-
+            this.getOwnerComponent().getRouter().navTo("pdpVOPlanPage");
         },
 
         onOpenMassObj: function () {
@@ -1017,13 +750,31 @@ sap.ui.define([
                     var obs = sap.ui.getCore().byId("pdp-idMassLibObs").getValue();
                     if (selIni.length === 0 || users.length === 0 || date === null) {
                         var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                        MessageBox.error(i18n.getText("missingFields"))
+                        MessageBox.error(i18n.getText("pdp.missingFields"))
                         this.byId("pdp-page").setBusy(false);
                         return;
                     }
                     this._flag = 0;
                     for (var i = 0; i < selIni.length; i++) {
-                        const teste = 1;
+                        for (let j = 0; j < users.length; j++) {
+                            const libData = this.getView().getModel("libraryObjectives").getData()
+                            const found = libData.find((item) => item.cust_objLibraryId === selIni[i].getKey())
+                            const data = {
+                                ncolab: users[j].split(" ")[0],
+                                pId: users[j].split(" ")[1],
+                                cust_objectiveName: found.cust_objName,
+                                cust_objectiveDesc: found.cust_objDesc,
+                                cust_initiativeType: found.cust_initiativeType,
+                                cust_createdByManager: true,
+                                cust_objLibraryId: found.cust_objLibraryId,
+                                cust_objectiveRealDate: date,
+                                cust_objectiveObs: obs,
+                                cust_objectiveStatus: 1
+                            }
+                            const modelData = this.getOwnerComponent().getModel('objTab').getData();
+                            modelData.push(data)
+                            this.getOwnerComponent().getModel('objTab').setData(modelData)
+                        }
                     }
                     break;
                 case "new":
@@ -1035,163 +786,36 @@ sap.ui.define([
                     var obs = sap.ui.getCore().byId("pdp-idObservCustObjMass").getValue();
                     if (name === "" || desc === "" || users.length === 0 || date === null) {
                         var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                        MessageBox.error(i18n.getText("missingFields"))
+                        MessageBox.error(i18n.getText("pdp.missingFields"))
                         this.byId("pdp-page").setBusy(false);
                         return;
                     }
                     var model = this.getView().getModel();
                     var pdpModel = this.getView().getModel("TeamPDP").oData.data;
-                    for (var j = 0; j < users.length; j++) {
-                        var finalModel = [];
-                        var keyDetails = users[j].split(' ');
-                        for (var k = 0; k < pdpModel.length; k++) {
-                            if (pdpModel[k].pId === keyDetails[1] && pdpModel[k].NColab === keyDetails[0]) {
-                                finalModel.push(pdpModel[k]);
-                            }
+                    for (let j = 0; j < users.length; j++) {
+                        const data = {
+                            ncolab: users[j].split(" ")[0],
+                            pId: users[j].split(" ")[1],
+                            cust_objectiveName: name,
+                            cust_objectiveDesc: desc,
+                            cust_initiativeType: formTyp,
+                            cust_createdByManager: true,
+                            cust_objLibraryId: '',
+                            cust_objectiveRealDate: date,
+                            cust_objectiveObs: obs,
+                            cust_objectiveStatus: 1
                         }
-                        this.createMassCustObj(keyDetails, model, finalModel, name, desc, obs, formTyp, date);
+                        const modelData = this.getOwnerComponent().getModel('objTab').getData();
+                        modelData.push(data)
+                        this.getOwnerComponent().getModel('objTab').setData(modelData)
                     }
                     break;
             }
+
+            var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
+            MessageBox.success(i18n.getText("pdp.addMassObjSuccess"));
+            that.byId("pdp-page").setBusy(false);
             this._massObj.close();
-        },
-
-        createMassCustObj: function (keyDetails, model, pdpModel, name, desc, obs, formTyp, date) {
-            var that = this;
-            var filters = "cust_pdpEmployees_cust_empId eq '" + keyDetails[0] + "' and cust_pdpConfig_cust_pdpId eq '" + keyDetails[1] + "' and cust_objectiveStatus ne '4'"
-            model.read("/cust_pdpObjectives", { //get para verificar o número de iniciativas neste momento
-                urlParameters: {
-                    "$filter": filters,
-                    "operation": "getMassObjectives"
-                },
-                success: function (oData) {
-                    for (var i = 0; i < pdpModel.length; i++) {
-                        if (parseInt(pdpModel[i].cust_pdpMaxObj) >= oData.results.length + 1) {
-                            var data = {
-                                cust_pdpEmployees_cust_empId: keyDetails[0],
-                                cust_pdpConfig_cust_pdpId: keyDetails[1],
-                                cust_objectiveName: name,
-                                cust_objectiveDesc: desc,
-                                cust_objectiveObs: obs,
-                                cust_objectiveStatus: '1',
-                                cust_initiativeType: formTyp,
-                                cust_objectiveType: '1',
-                                cust_objectiveRealDate: date,
-                                cust_createdByManager: true
-                            }
-                            that.getView().getModel().create("/cust_pdpObjectives", data, {
-                                urlParameters: {
-                                    "operation": "createMassCustObjCritical"
-                                },
-                                success: function () {
-                                    if (that.byId("pdp-page").isBusy()) {
-                                        that.byId("pdp-page").setBusy(false);
-                                        var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                                        MessageBox.success(i18n.getText("addMassObjSuccess"));
-                                        return;
-                                    }
-                                },
-                                error: function (response) {
-                                    var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                                    MessageBox.error(response.message + i18n.getText("statusCode") + response.statusCode + " " + response.responseText);
-                                    that.byId("pdp-page").setBusy(false);
-                                }
-                            });
-                        }
-                        else {
-                            var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                            MessageBox.error(i18n.getText("addMassObjFail"))
-                            that.byId("pdp-page").setBusy(false);
-                        }
-                    }
-                },
-                error: function (response) {
-                    var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                    MessageBox.error(response.message + i18n.getText("statusCode") + response.statusCode + " " + response.responseText);
-                    that.byId("pdp-page").setBusy(false);
-                }
-            })
-        },
-
-        createMassLibObj: function (oData, keyDetails, obs, date, len) {
-            var that = this;
-            var pdpFilters = "cust_pdpEmployees_cust_empId eq '" + keyDetails[0] + "' and cust_pdpConfig_cust_pdpId eq '" + keyDetails[1] + "'";
-            that.getView().getModel().read("/cust_pdpObjectives", {
-                urlParameters: {
-                    "$filter": pdpFilters,
-                    "operation": "getMassObjectives"
-                },
-                success: function (oData2) {
-                    var filters = [];
-                    filters.push(new Filter("cust_pdpId", "EQ", keyDetails[1]));
-                    var filters = "cust_pdpId eq '" + keyDetails[1] + "'"
-                    that.getView().getModel().read("/cust_pdpConfig", {
-                        urlParameters: {
-                            "$filter": filters,
-                            "operation": "getPersPDPConfig"
-                        },
-                        success: function (oData3) {
-                            if (parseInt(oData3.results[0].cust_pdpMaxObj) >= (oData2.results.length + len)) {
-                                var flag = 0;
-                                for (var k = 0; k < oData2.results.length; k++) {
-                                    if (oData2.results[k].cust_objLibraryId === oData.cust_objLibraryId) {
-                                        flag = 1;
-                                    }
-                                }
-                                if (flag === 0) {
-                                    var data = {
-                                        cust_pdpEmployees_cust_empId: keyDetails[0],
-                                        cust_pdpConfig_cust_pdpId: keyDetails[1],
-                                        cust_objectiveName: oData.cust_objName,
-                                        cust_objectiveDesc: oData.cust_objDesc,
-                                        cust_objectiveObs: obs,
-                                        cust_objectiveStatus: '1',
-                                        cust_initiativeType: oData.cust_initiativeType,
-                                        cust_objectiveType: '1',
-                                        cust_objectiveRealDate: date,
-                                        cust_createdByManager: true,
-                                        cust_objLibraryId: oData.cust_objLibraryId
-                                    }
-                                    that.getView().getModel().create("/cust_pdpObjectives", data, {
-                                        urlParameters: {
-                                            "operation": "createMassCustObjCritical"
-                                        },
-                                        success: function () {
-                                            if (that.byId("pdp-page").isBusy()) {
-                                                that.byId("pdp-page").setBusy(false);
-                                                var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                                                MessageBox.success(i18n.getText("addMassObjSuccess"));
-                                                return;
-                                            }
-                                        },
-                                        error: function (response) {
-                                            var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                                            MessageBox.error(response.message + i18n.getText("statusCode") + response.statusCode + " " + response.responseText);
-                                            that.byId("pdp-page").setBusy(false);
-                                        }
-                                    });
-                                }
-                                else {
-                                    that.byId("pdp-page").setBusy(false);
-                                }
-                            }
-                            else {
-                                that.byId("pdp-page").setBusy(false);
-                            }
-                        },
-                        error: function (response) {
-                            var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                            MessageBox.error(response.message + i18n.getText("statusCode") + response.statusCode + " " + response.responseText);
-                            that.byId("pdp-page").setBusy(false);
-                        }
-                    })
-                },
-                error: function (response) {
-                    var i18n = that.getOwnerComponent().getModel("i18n").getResourceBundle();
-                    MessageBox.error(response.message + i18n.getText("statusCode") + response.statusCode + " " + response.responseText);
-                    that.byId("pdp-page").setBusy(false);
-                }
-            })
         },
 
         _valueHelpUpdateFinished: function () {
@@ -1255,7 +879,7 @@ sap.ui.define([
                 this._pPopover = sap.ui.xmlfragment("projects.fragment.pdp.PopoverTeamHelp", this);
                 this.getView().addDependent(this._pPopover);
             }
-            this._pPopover.getAggregation("content")[0].getAggregation("content")[0].setText(i18n.getText("helpTextTeam"))
+            this._pPopover.getAggregation("content")[0].getAggregation("content")[0].setText(i18n.getText("pdp.helpTextTeam"))
             this._pPopover.openBy(oButton);
         },
 
@@ -1267,7 +891,7 @@ sap.ui.define([
                 this._pPopover = sap.ui.xmlfragment("projects.fragment.pdp.PopoverTeamHelp", this);
                 this.getView().addDependent(this._pPopover);
             }
-            this._pPopover.getAggregation("content")[0].getAggregation("content")[0].setText(i18n.getText("helpActionsTeam"))
+            this._pPopover.getAggregation("content")[0].getAggregation("content")[0].setText(i18n.getText("pdp.helpActionsTeam"))
             this._pPopover.openBy(oButton);
         },
 
