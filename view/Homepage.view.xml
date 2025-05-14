@@ -27,7 +27,7 @@
                 </FlexBox>
                 <Panel class="sapUiLargeMarginTop">
                     <VBox>
-                        <Title text="{i18n>homepage.aboutme.title}" />
+                        <Title text="{i18n>homepage.aboutme.title} - WIP" />
                     </VBox>
                     <layoutData>
                         <l:GridData span="XL6 L6 M8 S10" />
@@ -42,40 +42,29 @@
             <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
                   visible="{= !${device>/system/phone} }">
-                <HBox justifyContent="SpaceBetween"
+                <HBox justifyContent="Center"
                       class="myCenterMargins">
-                    <Button text="Go to Test Page1"
+                    <!--<Button text="Go to Test Page1"
                             width="150px"
-                            press="onNav"/>
+                            press="onNav"/> -->
                     <Button text="Go to PDP Project"
                             width="150px"
                             press="onNavPDP" />
-                    <Button text="Teste"
-                            width="150px" />
+                    <!--<Button text="Teste"
+                            width="150px" /> -->
                 </HBox>
             </VBox>
             <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
                   visible="{device>/system/phone}">
-                <Button text="Go to Test Page1"
+                <!--<Button text="Go to Test Page1"
                         width="150px"
-                        press="onNav" />
+                        press="onNav" /> -->
                 <Button text="Go to PDP Project"
                         width="150px"
                         press="onNavPDP" />
-                <Button text="Teste"
-                        width="150px" />
-            </VBox>
-
-            <VBox class="myTestVbox" width="100px"  alignItems="Center" justifyContent="Center">
-                <Text text="teste" class="myBlackText sapUiTinyMarginTop"></Text>
-                <Text text="teste" class="myBlackText sapUiTinyMarginBottom"></Text>
-            </VBox>
-            <VBox class="myCenteredVBox">
-                <Button icon="sap-icon://accept" text="Botão 1" type="Transparent"/>
-                <Button icon="sap-icon://cancel" text="Botão 2 com tamanho diferente" type="Transparent"/>
-                <Button icon="sap-icon://edit" text="Botão 3 testee" type="Transparent"/>
-                <Button icon="sap-icon://add" text="Botão 4 testeeeeeeee" type="Transparent"/>
+                <!--<Button text="Teste"
+                        width="150px" /> -->
             </VBox>
         </content>
     </Page>
