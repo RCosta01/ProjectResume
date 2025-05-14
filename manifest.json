@@ -76,7 +76,6 @@
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
-        "path": "projects.view",
         "async": true
       },
       "routes": [
@@ -126,27 +125,27 @@
       "targets": {
         "TargetHomepage": {
           "id": "Homepage",
-          "name": "Homepage"
+          "name": "projects.view.Homepage"
         },
         "TargetPage1": {
           "id": "Page1",
-          "name": "page1"
+          "name": "projects.view.page1"
         },
         "PDPHomepage": {
           "id": "PDPHomepage",
-          "name": "pdp/homepage"
+          "name": "projects.view.pdp.homepage"
         },
         "PDPMgrPlanPage": {
           "id": "PDPMgrPlanPage",
-          "name": "pdp/MgrPlanPage"
+          "name": "projects.view.pdp.MgrPlanPage"
         },
         "PDPEmpPlanPage": {
           "id": "PDPEmpPlanPage",
-          "name": "pdp/EmpPlanPage"
+          "name": "projects.view.pdp.EmpPlanPage"
         },
         "PDPVOPlanPage": {
           "id": "PDPVOPlanPage",
-          "name": "pdp/VOPlanPage"
+          "name": "projects.view.pdp.VOPlanPage"
         }
       }
     },
