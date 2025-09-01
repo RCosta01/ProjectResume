@@ -15,6 +15,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.e
 	"projects/controller/Timeline.js":function(){
 sap.ui.define(["sap/ui/core/Control","sap/ui/Device"],function(e,t){"use strict";const n=document.createElement("link");n.id="timeline-css";n.rel="stylesheet";n.type="text/css";n.href=sap.ui.require.toUrl("projects/css/Timeline.css");document.head.appendChild(n);return e.extend("projects.controller.Timeline",{metadata:{properties:{data:{type:"object",bindable:"bindable"}}},renderer:{apiVersion:2,render:function(e,t){const n=t.getData()||[];if(n.length>0){function s(e){var t=e.split(".");return new Date(t[2],t[1]-1,t[0])}n.sort(function(e,t){return s(t.startDate)-s(e.startDate)});n.sort()}let o=[0];for(let i=1;i<n.length;i++){const r=n[i-1].startDate;const a=n[i].startDate;const c=new Date(r.split(".")[2],r.split(".")[1]-1);const l=new Date(a.split(".")[2],a.split(".")[1]-1);const p=(c.getTime()-l.getTime())/1e3/60/60/24;let d=Math.round(p/30)*10;if(d>50)d=50;o.push(d)}e.openStart("div",t);e.class("timeline");e.openEnd();if(n.length>0){n.forEach((t,n)=>{e.openStart("div");e.class("project");if(n!==o.length+1)e.style("margin-bottom",o[n+1]+"px");e.openEnd();e.openStart("div");e.class("project-content");e.openEnd();e.openStart("h2");e.openEnd();e.text(t.date||"");e.close("h2");e.openStart("h2");e.openEnd();e.text(t.title||"");e.close("h2");e.openStart("p");e.openEnd();e.text(t.description||"");e.close("p");e.close("div");e.close("div")});e.close("div")}}}})});
 },
+	"projects/controller/TimelineItem.js":function(){
+
+},
 	"projects/controller/pdp/EmpPlanPage.controller.js":function(){
 sap.ui.define(["sap/ui/core/mvc/Controller"],function(e){"use strict";return e.extend("projects.controller.pdp.EmpPlanPage",{onInit:function(){jQuery.sap.includeStyleSheet(sap.ui.require.toUrl("projects/css/pdp.css"))}})});
 },

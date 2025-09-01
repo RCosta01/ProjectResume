@@ -84,7 +84,7 @@ body {
     /* Full-width containers */
     .project {
         width: 100%;
-        padding-left: 70px;
+        padding-left: 60px;
         padding-right: 25px;
     }
 
@@ -93,6 +93,18 @@ body {
         left: 60px;
         border: medium solid hsla(233, 8%, 15%, 1);
         border-width: 10px 10px 10px 0;
+        border-color: transparent hsla(233, 8%, 15%, 1) transparent transparent;
+    }
+
+    .project::after {
+        right: calc(100% - 39px); /* 31 px margin + 8px centering */
+    }
+
+    .project .project-content:before {
+        right: 100%;
+        left: auto;
+        border-width: 10px 10px 10px 0px;
+        border-left: 10px solid rgba(0, 0, 0, 0.5);
         border-color: transparent hsla(233, 8%, 15%, 1) transparent transparent;
     }
 }
