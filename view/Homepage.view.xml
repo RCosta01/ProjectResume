@@ -66,7 +66,7 @@
                         class="myPDPButton myProjectsButton" />
                 <!-- <Button text="Teste" width="150px" /> -->
             </VBox>
-            <VBox class="sapUiLargeMargin Top">
+            <VBox class="sapUiLargeMarginTop">
                 <custom:Timeline data="{Timeline>/}" />
             </VBox>
         </content>
