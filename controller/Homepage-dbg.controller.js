@@ -12,16 +12,12 @@ sap.ui.define([
             }, this);
         },
 
-        onTest: function () {
-            var teste = 1;
-        },
-
         onNav: function () {
             this.getOwnerComponent().getRouter().navTo('routePage1');
         },
 
         onNavPDP: function () {
             this.getOwnerComponent().getRouter().navTo('pdpHomepage');
-        }
+        },
     });
 });

@@ -51,6 +51,10 @@
                 "settings": {
                     "bundleName": "projects.i18n.i18n"
                 }
+            },
+            "Timeline": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/timeline.json"
             }
         },
         "resources": {

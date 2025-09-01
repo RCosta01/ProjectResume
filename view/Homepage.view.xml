@@ -2,7 +2,8 @@
           xmlns:mvc="sap.ui.core.mvc"
           xmlns="sap.m"
           xmlns:core="sap.ui.core"
-          xmlns:l="sap.ui.layout">
+          xmlns:l="sap.ui.layout"
+          xmlns:custom="projects.controller">
     <Page id="page"
           title="{i18n>title}"
           showHeader="false"
@@ -41,32 +42,31 @@
             </l:Grid>
             <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
-                  visible="{= !${device>/system/phone} }">
+                  visible="{= !${device>/system/phone} }"
+                  height="170px">
                 <HBox justifyContent="Center"
                       class="myCenterMargins">
-                    <!--<Button text="Go to Test Page1"
-                            width="150px"
-                            press="onNav"/> -->
+                    <!-- <Button text="Go to Test Page1" width="150px" press="onNav"/> -->
                     <Button text="PDP"
                             width="360px"
                             press="onNavPDP"
-                            class="myPDPButton myProjectsButton"/>
-                    <!--<Button text="Teste"
-                            width="150px" /> -->
+                            class="myPDPButton myProjectsButton" />
+                    <!-- <Button text="Teste" width="150px" /> -->
                 </HBox>
             </VBox>
             <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
-                  visible="{device>/system/phone}" alignItems="Center">
-                <!--<Button text="Go to Test Page1"
-                        width="150px"
-                        press="onNav" /> -->
+                  visible="{device>/system/phone}"
+                  alignItems="Center">
+                <!-- <Button text="Go to Test Page1" width="150px" press="onNav" /> -->
                 <Button text="PDP"
-                    width="320px"
-                    press="onNavPDP"
-                    class="myPDPButton myProjectsButton"/>
-                <!--<Button text="Teste"
-                        width="150px" /> -->
+                        width="320px"
+                        press="onNavPDP"
+                        class="myPDPButton myProjectsButton" />
+                <!-- <Button text="Teste" width="150px" /> -->
+            </VBox>
+            <VBox class="sapUiLargeMargin Top">
+                <custom:Timeline data="{Timeline>/}" />
             </VBox>
         </content>
     </Page>
