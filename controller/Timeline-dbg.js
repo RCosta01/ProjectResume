@@ -7,6 +7,13 @@ sap.ui.define([
 ) {
   "use strict";
 
+  const link = document.createElement("link");
+  link.id = "timeline-css";
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = sap.ui.require.toUrl("projects/css/Timeline.css");
+  document.head.appendChild(link);
+
   return Control.extend("projects.controller.Timeline", {
     metadata: {
       properties: {
@@ -18,67 +25,40 @@ sap.ui.define([
       apiVersion: 2,
       render: function (oRm, oControl) {
         const aData = oControl.getData() || [];
-        const dists = [0];
-        if (!sap.ui.Device.system.phone) {
-          let maxSize = 50;
-          const minDist = 30;
-          const maxDist = 300;
-          const minVerticalDist = 240;
-          let oldDistRight = 300;
-          let oldDistLeft = 300;
-          for (let i = 1; i < aData.length; i++) {
-            const oldDate = aData[i - 1].startDate;
-            const newDate = aData[i].startDate;
-            const oldDateDate = new Date(oldDate.split('.')[2], oldDate.split('.')[1] - 1)
-            const newDateDate = new Date(newDate.split('.')[2], newDate.split('.')[1] - 1)
-            const dateDiff = (newDateDate.getTime() - oldDateDate.getTime()) / 1000 / 60 / 60 / 24;
-            let pixelDiff = dateDiff * 2;
-            if (pixelDiff < minDist) {
-              pixelDiff = minDist
-            }
-            if (pixelDiff > maxDist) {
-              pixelDiff = maxDist
-            }
-            if (i % 2 === 0) {
-              if (oldDistLeft + pixelDiff < minVerticalDist) {
-                pixelDiff = minVerticalDist - oldDistLeft;
-              }
-              oldDistRight = pixelDiff
-            } else {
-              if (oldDistRight + pixelDiff < minVerticalDist) {
-                pixelDiff = minVerticalDist - oldDistRight;
-              }
-              oldDistLeft = pixelDiff
-            }
-            maxSize = maxSize + pixelDiff;
-            dists.push(dists[i - 1] + pixelDiff)
+        if (aData.length > 0) {
+          function parseDate(str) {
+            var parts = str.split(".");
+            return new Date(parts[2], parts[1] - 1, parts[0]);
           }
-
-          oRm.openStart("div", oControl);
-          oRm.class("timeline");
-          oRm.style("position", "relative");
-          oRm.style("min-height", maxSize + 150 + "px");
-          oRm.openEnd();
-        } else {
-          oRm.openStart("div", oControl);
-          oRm.class("timeline");
-          oRm.openEnd();
+          aData.sort(function (a, b) {
+            return parseDate(b.startDate) - parseDate(a.startDate);
+          });
+          aData.sort()
         }
+        let dists = [0]
+        for (let i = 1; i < aData.length; i++) {
+          const oldDate = aData[i - 1].startDate;
+          const newDate = aData[i].startDate;
+          const oldDateDate = new Date(oldDate.split('.')[2], oldDate.split('.')[1] - 1)
+          const newDateDate = new Date(newDate.split('.')[2], newDate.split('.')[1] - 1)
+          const dateDiff = (oldDateDate.getTime() - newDateDate.getTime()) / 1000 / 60 / 60 / 24;
+          let pixelDiff = Math.round(dateDiff / 30) * 10 // 5px per month
+          if(pixelDiff > 50) pixelDiff = 50;
+          dists.push(pixelDiff)
+        }
+
+        oRm.openStart("div", oControl);
+        oRm.class("timeline");
+        oRm.openEnd();
         if (aData.length > 0) {
           aData.forEach((item, i) => {
-            const side = i % 2 === 0 ? "left" : "right"; // alternate sides
-
             oRm.openStart("div");
-            oRm.class("container");
-            oRm.class(side);
-            if (!sap.ui.Device.system.phone) {
-              oRm.style("position", "absolute");
-              oRm.style("top", dists[i] + "px");
-            }
+            oRm.class("project");
+            if(i !== dists.length + 1) oRm.style("margin-bottom", dists[i + 1] + "px");
             oRm.openEnd();
 
             oRm.openStart("div");
-            oRm.class("content");
+            oRm.class("project-content");
             oRm.openEnd();
 
             oRm.openStart("h2");
@@ -103,6 +83,6 @@ sap.ui.define([
           oRm.close("div"); // timeline
         }
       }
-    }
+    },
   });
 });
