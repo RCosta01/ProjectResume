@@ -18,6 +18,7 @@ sap.ui.define([
       apiVersion: 2,
       render: function (oRm, oControl) {
         const aData = oControl.getData() || [];
+        const dists = [0];
         if (!sap.ui.Device.system.phone) {
           let maxSize = 50;
           const minDist = 30;
@@ -25,7 +26,6 @@ sap.ui.define([
           const minVerticalDist = 240;
           let oldDistRight = 300;
           let oldDistLeft = 300;
-          const dists = [0];
           for (let i = 1; i < aData.length; i++) {
             const oldDate = aData[i - 1].startDate;
             const newDate = aData[i].startDate;
