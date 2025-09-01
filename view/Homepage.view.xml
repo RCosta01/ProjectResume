@@ -57,7 +57,8 @@
             <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
                   visible="{device>/system/phone}"
-                  alignItems="Center">
+                  alignItems="Center"
+                  height="170px">
                 <!-- <Button text="Go to Test Page1" width="150px" press="onNav" /> -->
                 <Button text="PDP"
                         width="320px"
