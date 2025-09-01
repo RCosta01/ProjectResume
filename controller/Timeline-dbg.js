@@ -64,7 +64,7 @@ sap.ui.define([
           oRm.class("timeline");
           oRm.openEnd();
         }
-        if (aData) {
+        if (aData.length > 0) {
           aData.forEach((item, i) => {
             const side = i % 2 === 0 ? "left" : "right"; // alternate sides
 
