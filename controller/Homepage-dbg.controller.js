@@ -19,5 +19,10 @@ sap.ui.define([
         onNavPDP: function () {
             this.getOwnerComponent().getRouter().navTo('pdpHomepage');
         },
+
+        onLinkpress: function (oEvent) {
+            console.log('event Fired!')
+            const demo = oEvent.getSource().getBindingContext("Timeline").getProperty('demo')
+        }
     });
 });

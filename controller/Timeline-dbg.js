@@ -16,12 +16,16 @@ sap.ui.define([
 
   return Control.extend("projects.controller.Timeline", {
     metadata: {
-      properties: {
-        data: { type: "object", bindable: "bindable" }
+      defaultAggregation: "items",
+      aggregations: {
+        items: { type: "projects.controller.TimelineItem", multiple: true, bindable: "bindable" }
       }
+      /*properties: {
+        data: { type: "object", bindable: "bindable" }
+      } */
     },
 
-    renderer: {
+    /*renderer: {
       apiVersion: 2,
       render: function (oRm, oControl) {
         const aData = oControl.getData() || [];
@@ -83,6 +87,41 @@ sap.ui.define([
           oRm.close("div"); // timeline
         }
       }
-    },
+    }, */
+    renderer: {
+      apiVersion: 2,
+      render: function (oRm, oControl) {
+        oRm.openStart("div", oControl);
+        oRm.class("timeline");
+        oRm.openEnd();
+
+        const aData = oControl.getItems();
+        let dists = [0]
+        for (let i = 1; i < aData.length; i++) {
+          const oldDate = aData[i - 1].getProperty('date');
+          const newDate = aData[i].getProperty('date');
+          const oldDateDate = new Date(oldDate.split('-')[0], oldDate.split('-')[1] - 1)
+          const newDateDate = new Date(newDate.split('-')[0], newDate.split('-')[1] - 1)
+          const dateDiff = (oldDateDate.getTime() - newDateDate.getTime()) / 1000 / 60 / 60 / 24;
+          let pixelDiff = Math.round(dateDiff / 30) * 10 // 5px per month
+          if (pixelDiff > 50) pixelDiff = 50;
+          dists.push(pixelDiff)
+        }
+
+        oControl.getItems().forEach((oItem, i) => {
+
+          oRm.openStart("div");
+          oRm.class("project");
+          if(i !== dists.length + 1) oRm.style("margin-bottom", dists[i + 1] + "px");
+          oRm.openEnd();
+
+          oRm.renderControl(oItem);
+
+          oRm.close("div"); // container
+        });
+
+        oRm.close("div"); // timeline
+      }
+    }
   });
 });

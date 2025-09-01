@@ -67,7 +67,19 @@
                 <!-- <Button text="Teste" width="150px" /> -->
             </VBox>
             <VBox class="sapUiLargeMarginTop">
-                <custom:Timeline data="{Timeline>/}" />
+                <custom:Timeline items="{
+                        path: 'Timeline>/',
+                        sorter: { path: 'startDate', descending: true }
+                    }" >
+                    <custom:TimelineItem
+                        title="{Timeline>date}"
+                        subtitle="{Timeline>title}"
+                        description="{Timeline>description}"
+                        date="{Timeline>startDate}"
+                        demo="{Timeline>demo}"
+                        linkPress="onLinkpress"
+                    />
+                </custom:Timeline>
             </VBox>
         </content>
     </Page>

@@ -135,6 +135,13 @@ body {
 
 .timeline h2 {
     margin-block-start: 0px;
-    margin-block-end: 6px;
+    margin-block-end: 8px;
     font-size: 1.2rem; /* optional, adjust size */
+}
+
+.timelineLinkAsH2 {
+  font-size: 1.2rem;   /* matches h2 size */
+  font-weight: bold;
+  text-decoration: none; /* remove underline */
+  color: inherit;        /* inherit text color */
 }
