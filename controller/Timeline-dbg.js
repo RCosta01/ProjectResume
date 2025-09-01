@@ -64,43 +64,44 @@ sap.ui.define([
           oRm.class("timeline");
           oRm.openEnd();
         }
+        if (aData) {
+          aData.forEach((item, i) => {
+            const side = i % 2 === 0 ? "left" : "right"; // alternate sides
 
-        aData.forEach((item, i) => {
-          const side = i % 2 === 0 ? "left" : "right"; // alternate sides
+            oRm.openStart("div");
+            oRm.class("container");
+            oRm.class(side);
+            if (!sap.ui.Device.system.phone) {
+              oRm.style("position", "absolute");
+              oRm.style("top", dists[i] + "px");
+            }
+            oRm.openEnd();
 
-          oRm.openStart("div");
-          oRm.class("container");
-          oRm.class(side);
-          if (!sap.ui.Device.system.phone) {
-            oRm.style("position", "absolute");
-            oRm.style("top", dists[i] + "px");
-          }
-          oRm.openEnd();
+            oRm.openStart("div");
+            oRm.class("content");
+            oRm.openEnd();
 
-          oRm.openStart("div");
-          oRm.class("content");
-          oRm.openEnd();
+            oRm.openStart("h2");
+            oRm.openEnd();
+            oRm.text(item.date || "");
+            oRm.close("h2");
 
-          oRm.openStart("h2");
-          oRm.openEnd();
-          oRm.text(item.date || "");
-          oRm.close("h2");
+            oRm.openStart("h2");
+            oRm.openEnd();
+            oRm.text(item.title || "");
+            oRm.close("h2");
 
-          oRm.openStart("h2");
-          oRm.openEnd();
-          oRm.text(item.title || "");
-          oRm.close("h2");
+            oRm.openStart("p");
+            oRm.openEnd();
+            oRm.text(item.description || "");
+            oRm.close("p");
 
-          oRm.openStart("p");
-          oRm.openEnd();
-          oRm.text(item.description || "");
-          oRm.close("p");
+            oRm.close("div"); // content
+            oRm.close("div"); // container
+          });
 
-          oRm.close("div"); // content
-          oRm.close("div"); // container
-        });
-
-        oRm.close("div"); // timeline
+          oRm.close("div"); // timeline
+        }
       }
     }
   });
