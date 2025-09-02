@@ -1,9 +1,11 @@
 sap.ui.define([
     "sap/ui/core/Control",
-    "sap/m/Link"
+    "sap/m/Link",
+    "sap/ui/Device"
 ], function (
     Control,
-    Link
+    Link,
+    Device
 ) {
     "use strict";
 
@@ -76,7 +78,7 @@ sap.ui.define([
         onAfterRendering: function(oEvent) {
             const domRef = this.getDomRef();
             if(!domRef) return;
-
+            const threshold = Device.system.phone ? 0.4 : 0.6;
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
@@ -85,7 +87,7 @@ sap.ui.define([
                         domRef.classList.remove("projectVisible");
                     }
                 })
-            }, { threshold: 0.6 })
+            }, { threshold: threshold })
             observer.observe(domRef);
         }
     });
