@@ -26,7 +26,7 @@ sap.ui.define([
             apiVersion: 2,
             render: function (oRm, oControl) {
 
-                oRm.openStart("div");
+                oRm.openStart("div", oControl);
                 oRm.class("project-content");
                 if (oControl.getCssClass()) {
                     oRm.class(oControl.getCssClass());
@@ -66,6 +66,27 @@ sap.ui.define([
 
                 oRm.close("div"); // content
             }
+        },
+
+        /**
+         * @override
+         * @param {jQuery.Event} oEvent <p>onAfterRendering event object</p>
+         * @returns {void|undefined}
+         */
+        onAfterRendering: function(oEvent) {
+            const domRef = this.getDomRef();
+            if(!domRef) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        domRef.classList.add("projectVisible");
+                    } else {
+                        domRef.classList.remove("projectVisible");
+                    }
+                })
+            }, { threshold: 0.6 })
+            observer.observe(domRef);
         }
     });
 });

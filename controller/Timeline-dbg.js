@@ -110,7 +110,7 @@ sap.ui.define([
 
         oControl.getItems().forEach((oItem, i) => {
 
-          oRm.openStart("div");
+          oRm.openStart("div", oControl);
           oRm.class("project");
           if(i !== dists.length + 1) oRm.style("margin-bottom", dists[i + 1] + "px");
           oRm.openEnd();

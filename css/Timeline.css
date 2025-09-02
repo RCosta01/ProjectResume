@@ -142,6 +142,30 @@ body {
 .timelineLinkAsH2 {
   font-size: 1.2rem;   /* matches h2 size */
   font-weight: bold;
-  text-decoration: none; /* remove underline */
-  color: inherit;        /* inherit text color */
+}
+
+@media screen and (min-width: 600px) {
+/*slide animations */
+    .project .project-content{
+        opacity: 0;
+        transition: all 0.8s ease-out;
+    }
+
+    .project:nth-child(2n+1) .project-content{
+        transform: translateX(-100px);
+    }
+
+    .project:nth-child(2n) .project-content{
+        transform: translateX(100px);
+    }
+
+    .project:nth-child(2n+1) .project-content.projectVisible {
+        opacity: 1;
+        transform: translateX(0); /* reset translation */
+    }
+
+    .project:nth-child(2n) .project-content.projectVisible {
+        opacity: 1;
+        transform: translateX(0%); /* reset translation */
+    }
 }

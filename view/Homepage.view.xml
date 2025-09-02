@@ -40,18 +40,16 @@
                     </layoutData>
                 </FlexBox>
             </l:Grid>
-            <VBox class="sapUiLargeMarginTop"
+            <!--<VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
                   visible="{= !${device>/system/phone} }"
                   height="170px">
                 <HBox justifyContent="Center"
                       class="myCenterMargins">
-                    <!-- <Button text="Go to Test Page1" width="150px" press="onNav"/> -->
                     <Button text="PDP"
                             width="360px"
                             press="onNavPDP"
                             class="myPDPButton myProjectsButton" />
-                    <!-- <Button text="Teste" width="150px" /> -->
                 </HBox>
             </VBox>
             <VBox class="sapUiLargeMarginTop"
@@ -59,13 +57,11 @@
                   visible="{device>/system/phone}"
                   alignItems="Center"
                   height="170px">
-                <!-- <Button text="Go to Test Page1" width="150px" press="onNav" /> -->
                 <Button text="PDP"
                         width="320px"
                         press="onNavPDP"
                         class="myPDPButton myProjectsButton" />
-                <!-- <Button text="Teste" width="150px" /> -->
-            </VBox>
+            </VBox>  -->
             <VBox class="sapUiLargeMarginTop">
                 <custom:Timeline items="{
                         path: 'Timeline>/',
