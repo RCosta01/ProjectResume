@@ -54,15 +54,15 @@
             },
             "Timeline": {
                 "type": "sap.ui.model.json.JSONModel",
-                "uri": "model/timeline.json"
+                "uri": "model/data/timeline.json"
             },
             "profHist": {
                 "type": "sap.ui.model.json.JSONModel",
-                "uri": "model/profHist.json"
+                "uri": "model/data/profHist.json"
             },
             "demos": {
                 "type": "sap.ui.model.json.JSONModel",
-                "uri": "model/demos.json"
+                "uri": "model/data/demos.json"
             }
         },
         "resources": {
