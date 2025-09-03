@@ -90,12 +90,6 @@
                         "TargetHomepage"
                     ]
                 }, {
-                    "name": "routePage1",
-                    "pattern": "page1",
-                    "target": [
-                        "TargetPage1"
-                    ]
-                }, {
                     "name": "pdpHomepage",
                     "pattern": "pdp/Homepage",
                     "target": [
@@ -125,10 +119,6 @@
                 "TargetHomepage": {
                     "id": "Homepage",
                     "name": "projects.view.Homepage"
-                },
-                "TargetPage1": {
-                    "id": "Page1",
-                    "name": "projects.view.page1"
                 },
                 "PDPHomepage": {
                     "id": "PDPHomepage",
