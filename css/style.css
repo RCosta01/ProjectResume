@@ -22,14 +22,14 @@
     }
 }
 
-.myBackgroundImage {
+/*.myBackgroundImage {
     background-image: url("../images/appBackground2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
     min-height: 100%;
-}
+}*/
 
 @keyframes slideUp {
     from {
@@ -352,4 +352,8 @@
 
 html.sap-desktop .headerSize .sapMBtn:focus>.sapMFocusable {
     outline: none
+}
+
+.headerColor.sapMTB {
+    background-color: #081222;
 }

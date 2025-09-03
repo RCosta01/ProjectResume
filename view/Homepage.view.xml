@@ -5,8 +5,7 @@
           xmlns:custom="projects.controller.components">
     <Page id="page"
           title="{i18n>title}"
-          showHeader="true"
-          class="myBackgroundImage">
+          showHeader="true">
         <customHeader>
             <core:Fragment fragmentName="projects.fragment.components.pageHeader"
                            type="XML" />
