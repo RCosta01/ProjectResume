@@ -344,3 +344,7 @@
     font-size: 1.2rem;
     color: white
 }
+
+html.sap-desktop .headerSize .sapMBtn:focus>.sapMFocusable {
+    outline: none
+}
