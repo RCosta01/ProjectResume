@@ -18,10 +18,12 @@
     <VBox class="demosPadding">
         <l:Grid defaultSpan="XL4 L6 M12 S12" content="{ path: 'demos>/', sorter: { path: 'date', descending: true } }" id="demosGrid">
             <VBox alignContent="Center">
-                    <HBox justifyContent="Center" class="myCenterMargins">
-                        <Button text="{demos>text}" press="onNavDemos" class="myProjectsButton" enabled="{demos>active}" />
-                    </HBox>
+                <HBox justifyContent="Center" class="myCenterMargins">
+                    <Button text="{demos>text}" press="onNavDemos" class="myProjectsButton" enabled="{demos>active}" />
+                </HBox>
             </VBox>
         </l:Grid>
+        <Image class="portrait" alt="Portrait" visible="false" mode="Image" src="./images/WIP.jpg" />
+        <Image class="portrait" alt="Portrait" visible="false" mode="Image" src="./images/PDP-Homepage.png"/>
     </VBox>
 </core:FragmentDefinition>
