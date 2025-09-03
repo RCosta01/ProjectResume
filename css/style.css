@@ -115,7 +115,7 @@
     .myPDPButton .sapMBtnInner:hover {
         background-image:
             linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
-            url("../../images/PDP-Homepage.png");
+            url("../images/PDP-Homepage.png");
         background-size: cover;
         height: 170px;
         width: 360px;
@@ -124,7 +124,7 @@
     .myPDPButton .sapMBtnInner {
         background-image:
             linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
-            url("../../images/PDP-Homepage.png");
+            url("../images/PDP-Homepage.png");
         background-size: cover;
     }
 
@@ -140,7 +140,7 @@
     .myWIPButton .sapMBtnInner {
         background-image:
             linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
-            url("../../images/WIP.jpg");
+            url("../images/WIP.jpg");
         background-size: cover;
     }
 }
