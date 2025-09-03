@@ -2,7 +2,7 @@
     xmlns:core="sap.ui.core">
     <VBox >
         <OverflowToolbar class="headerColor headerSize" height="60px">
-            <HBox justifyContent="Center" alignItems="Center" width="200px">
+            <HBox justifyContent="Center" alignItems="Center" width="250px">
                 <core:Icon src="sap-icon://sap-ui5" size="30px" />
                 <Title text="{i18n>title}" level="H1" class="headerTextColor headerTextSize sapUiSmallMarginBegin"/>
             </HBox>
@@ -13,7 +13,7 @@
                 <Button text="Projects" class="sapUiMediumMarginBegin" press="navToProjects"/>
             </HBox>
             <ToolbarSpacer />
-            <HBox justifyContent="End" alignItems="Center" width="200px">
+            <HBox justifyContent="End" alignItems="Center" width="250px">
                 <Button icon="././images/github-white-icon.png" press="onOpenGithub" class="githubIcon"/>
             </HBox>
         </OverflowToolbar>
