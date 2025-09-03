@@ -1,18 +1,18 @@
 <core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core">
         <OverflowToolbar class="headerColor headerSize" height="60px">
-            <HBox justifyContent="Center" alignItems="Center" width="250px">
+            <HBox justifyContent="Center" alignItems="Center">
                 <core:Icon src="sap-icon://sap-ui5" size="30px" />
                 <Title text="{i18n>title}" level="H1" class="headerTextColor headerTextSize sapUiSmallMarginBegin"/>
             </HBox>
             <ToolbarSpacer />
-            <HBox justifyContent="Center" alignItems="Center" visible="{= !${device>/system/phone} }">
+            <HBox class="centerBox" justifyContent="Center" alignItems="Center" visible="{= !${device>/system/phone} }">
                 <Button text="Experience" press="navToExp"/>
                 <Button text="Demos" class="sapUiMediumMarginBegin" press="navToDemos"/>
                 <Button text="Projects" class="sapUiMediumMarginBegin" press="navToProjects"/>
             </HBox>
             <ToolbarSpacer />
-            <HBox justifyContent="End" alignItems="Center" width="250px">
+            <HBox justifyContent="End" alignItems="Center">
                 <Button icon="././images/github-white-icon.png" press="onOpenGithub" class="githubIcon"/>
             </HBox>
         </OverflowToolbar>

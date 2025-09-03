@@ -95,7 +95,7 @@
 
 @media only screen and (min-width: 700px) {
 
-    .myProjectsButton.sapMBtn{
+    .myProjectsButton.sapMBtn {
         height: 180px;
         width: 360px;
     }
@@ -152,7 +152,7 @@
         width: 320px;
     }
 
-    .myProjectsButton.sapMBtn{
+    .myProjectsButton.sapMBtn {
         height: 160px;
         width: 320px;
     }
@@ -332,7 +332,7 @@
     font-size: 1rem
 }
 
-.profHistList-roles.sapMList  {
+.profHistList-roles.sapMList {
     margin-top: 8px
 }
 
@@ -364,4 +364,20 @@ html.sap-desktop .headerSize .sapMBtn:focus>.sapMFocusable {
 
 .headerColor.sapMTB {
     background-color: #081222;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .headerSize .sapMHBox {
+        width: auto;
+    }
+
+}
+
+@media only screen and (min-width: 700px) {
+
+    .headerSize .sapMHBox:not(.centerBox) {
+        width: 250px;
+    }
+
 }
