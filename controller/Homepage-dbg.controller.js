@@ -55,8 +55,14 @@ sap.ui.define([
          */
         onAfterRendering: function() {
             const demosItems = this.byId("demosGrid").getContent();
-            this.byId("WIPimage").setVisible(false);
-            this.byId("PDPimage").setVisible(false);
+            if (demosItems.length === 0) {
+                setTimeout(() => {
+                    if (this.getView()) {
+                        this.onAfterRendering();
+                    }
+                }, 100);
+                return;
+            }
             for(let i = 0; i < demosItems.length; i++){
                 const button = demosItems[i].getItems()[0].getItems()[0];
                 const styleClass = demosItems[i].getBindingContext("demos").getProperty("css");

@@ -23,7 +23,5 @@
                 </HBox>
             </VBox>
         </l:Grid>
-        <Image id="WIPimage" visible="true" mode="Image" src="./images/WIP.jpg" />
-        <Image id="PDPimage" visible="true" mode="Image" src="./images/PDP-Homepage.png"/>
     </VBox>
 </core:FragmentDefinition>
