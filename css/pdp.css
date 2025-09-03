@@ -332,3 +332,7 @@
         color: white
     }
 }
+
+.pdp-massIni .sapUiRespGrid.sapUiRespGridVSpace1>div {
+    margin-bottom: 0rem;
+}

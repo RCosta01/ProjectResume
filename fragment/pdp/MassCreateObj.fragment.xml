@@ -1,5 +1,5 @@
 <core:FragmentDefinition displayBlock="true" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" height="100%" xmlns="sap.m">
-    <Dialog busyIndicatorDelay="0" title="{i18n>pdp.massObjCreationTitle}" contentWidth="500px" class="">
+    <Dialog busyIndicatorDelay="0" title="{i18n>pdp.massObjCreationTitle}" contentWidth="500px" class="pdp-massIni">
         <Panel class="">
             <SegmentedButton id="pdp-chooseObjButton" selectedKey="lib" selectionChange="onChangeObj" width="100%">
                 <items>
@@ -33,7 +33,7 @@
                     <Title level="H2" text="{i18n>pdp.objCreationDesc}" class="sapUiSmallMarginTop" />
                     <TextArea id="pdp-idTextAreaCObj" width="100%" value="" placeholder="{i18n>pdp.objCreationDescPh}" class="sapUiTinyMarginTop sapUiSmallMarginBottom"/>
                     <Title level="H2" text="{i18n>pdp.objCreationColab}" class="sapUiSmallMarginTop" />
-                    <MultiComboBox id="pdp-idMassObjCustColabs" items="{TeamPDP>/data}" class="sapUiTinyMarginTop sapUiSmallMarginBottom">
+                    <MultiComboBox id="pdp-idMassObjCustColabs" items="{TeamPDP>/}" class="sapUiTinyMarginTop sapUiSmallMarginBottom">
                         <core:Item key="{TeamPDP>NColab} {TeamPDP>pId}" text="{TeamPDP>Nome} - {TeamPDP>Titulo}" />
                     </MultiComboBox>
                 </l:Grid>

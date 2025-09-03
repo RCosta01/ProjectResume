@@ -142,7 +142,7 @@
                             </tooltip>
                         </Button>
                     </OverflowToolbar>
-                    <fb:FilterBar class="noPadding" useToolbar="false" header="" id="pdp-filterBar" search=".onFilterTable" showRestoreButton="false" showFilterConfiguration="false">
+                    <fb:FilterBar persistencyKey="" class="noPadding" useToolbar="false" header="" id="pdp-filterBar" search=".onFilterTable" showRestoreButton="false" showFilterConfiguration="false">
                         <fb:filterGroupItems>
                             <fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>pdp.tabFiltersPlan}" visibleInFilterBar="true">
                                 <fb:control>

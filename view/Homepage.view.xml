@@ -5,7 +5,8 @@
           xmlns:custom="projects.controller.components">
     <Page id="page"
           title="{i18n>title}"
-          showHeader="true">
+          showHeader="true"
+          class="homepage">
         <customHeader>
             <core:Fragment fragmentName="projects.fragment.components.pageHeader"
                            type="XML" />

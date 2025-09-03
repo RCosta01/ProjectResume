@@ -664,7 +664,8 @@ sap.ui.define([
                 pId: pId,
                 uId: uId,
                 pdps: item,
-                cname: cname
+                cname: cname,
+                status: item.Status
             }
             var oJsonModel = new JSONModel(data);
             this.getOwnerComponent().setModel(oJsonModel, "routingInfo");

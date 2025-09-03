@@ -348,27 +348,27 @@
     padding: 0 10%
 }
 
-.headerSize .sapMBtnInner {
+.homepage .headerSize .sapMBtnInner {
     font-size: 1.2rem;
     color: white
 }
 
-.headerSize .sapMTitle {
+.homepage .headerSize .sapMTitle {
     font-size: 1.2rem;
     color: white
 }
 
-html.sap-desktop .headerSize .sapMBtn:focus>.sapMFocusable {
+html.sap-desktop .homepage .headerSize .sapMBtn:focus>.sapMFocusable {
     outline: none
 }
 
-.headerColor.sapMTB {
+.homepage .headerColor.sapMTB {
     background-color: #081222;
 }
 
 @media only screen and (max-width: 700px) {
 
-    .headerSize .sapMHBox {
+    .homepage .headerSize .sapMHBox {
         width: auto;
     }
 
@@ -376,7 +376,7 @@ html.sap-desktop .headerSize .sapMBtn:focus>.sapMFocusable {
 
 @media only screen and (min-width: 700px) {
 
-    .headerSize .sapMHBox:not(.centerBox) {
+    .homepage .headerSize .sapMHBox:not(.centerBox) {
         width: 250px;
     }
 
