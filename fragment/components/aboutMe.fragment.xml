@@ -18,6 +18,7 @@
                 </VBox>
                 <VBox justifyContent="Center" class="aboutMeTextVBox" width="100%">
                     <Title text="{i18n>homepage.aboutme.text}" wrapping="true" class="aboutMeText"/>
+                    <Title text="{i18n>homepage.aboutme.text2}" wrapping="true" class="aboutMeText sapUiSmallMarginTop"/>
                 </VBox>
             </l:Grid>
             <layoutData>
