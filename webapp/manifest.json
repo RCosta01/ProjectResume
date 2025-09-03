@@ -33,7 +33,7 @@
         }
     },
     "sap.ui5": {
-        "flexEnabled": true,
+        "flexEnabled": false,
         "dependencies": {
             "minUI5Version": "1.132.1",
             "libs": {
@@ -51,6 +51,18 @@
                 "settings": {
                     "bundleName": "projects.i18n.i18n"
                 }
+            },
+            "Timeline": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/data/timeline.json"
+            },
+            "profHist": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/data/profHist.json"
+            },
+            "demos": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/data/demos.json"
             }
         },
         "resources": {
@@ -68,9 +80,7 @@
                 "transition": "slide",
                 "type": "View",
                 "viewType": "XML",
-                "path": "projects.view",
-                "async": true,
-                "viewPath": "projects.view"
+                "async": true
             },
             "routes": [
                 {
@@ -79,12 +89,52 @@
                     "target": [
                         "TargetHomepage"
                     ]
+                }, {
+                    "name": "pdpHomepage",
+                    "pattern": "pdp/Homepage",
+                    "target": [
+                        "PDPHomepage"
+                    ]
+                }, {
+                    "name": "pdpMgrPlanPage",
+                    "pattern": "pdp/MgrPlanPage",
+                    "target": [
+                        "PDPMgrPlanPage"
+                    ]
+                }, {
+                    "name": "pdpEmpPlanPage",
+                    "pattern": "pdp/EmpPlanPage",
+                    "target": [
+                        "PDPEmpPlanPage"
+                    ]
+                }, {
+                    "name": "pdpVOPlanPage",
+                    "pattern": "pdp/VOPlanPage",
+                    "target": [
+                        "PDPVOPlanPage"
+                    ]
                 }
             ],
             "targets": {
                 "TargetHomepage": {
                     "id": "Homepage",
-                    "name": "Homepage"
+                    "name": "projects.view.Homepage"
+                },
+                "PDPHomepage": {
+                    "id": "PDPHomepage",
+                    "name": "projects.view.pdp.homepage"
+                },
+                "PDPMgrPlanPage": {
+                    "id": "PDPMgrPlanPage",
+                    "name": "projects.view.pdp.MgrPlanPage"
+                },
+                "PDPEmpPlanPage": {
+                    "id": "PDPEmpPlanPage",
+                    "name": "projects.view.pdp.EmpPlanPage"
+                },
+                "PDPVOPlanPage": {
+                    "id": "PDPVOPlanPage",
+                    "name": "projects.view.pdp.VOPlanPage"
                 }
             }
         },

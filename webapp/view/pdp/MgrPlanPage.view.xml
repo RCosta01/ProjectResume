@@ -1,0 +1,270 @@
+<mvc:View
+	controllerName="projects.controller.pdp.MgrPlanPage"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+    class="pdpPage"
+>
+<Page id="pdp-mgrPlan" busyIndicatorDelay="0" busy="true" title="{i18n>pdp.title}" showHeader="false">
+        <content>
+            <VBox>
+                <OverflowToolbar class="headerColor headerSize">
+                    <Button text="" press=".onNavBack" type="Back" class="colorButtonInner" />
+                    <core:Icon src="sap-icon://sap-ui5" size="30px" class="whiteIcon"/>
+                    <Title text="{i18n>pdp.title}" level="H1" class="headerTextColor headerTextSize" />
+                    <ToolbarSpacer />
+                    <core:Icon src="sap-icon://customer" class="headerTextColor" />
+                    <Label class="sapUiSmallMarginEnd headerTextColor" text="Brandon Murray" />
+                    <Button text="{i18n>pdp.appLogout}" press="onLogout" class="colorButtonInner" />
+                </OverflowToolbar>
+            </VBox>
+            <ObjectHeader
+                visible="{= !${device>/system/phone} }"
+                id="pdp-objHeaderPlan"
+                busyIndicatorDelay="0"
+                icon="{picDetails>/data}"
+                iconDensityAware="false"
+                imageShape="Circle"
+                responsive="true"
+                title="{details>/uName}"
+                number="{details>/pName}"
+                class="sapUiResponsivePadding--header"
+            >
+                <ObjectAttribute
+                    visible="{= !${device>/system/phone} }"
+                    title="{i18n>pdp.pageStatus}"
+                    text="{
+                                        path: 'currentPlan>/status',
+                                        formatter: '.formatter.formatStatus'
+                                        }"
+                    class="alignRight"
+                />
+            </ObjectHeader>
+            <ObjectHeader backgroundDesign="Solid" visible="{device>/system/phone}" title="{details>/uName}" number="{details>/pName}" class="sapUiResponsivePadding--header">
+                <ObjectAttribute title="{i18n>pdp.pageStatus}" text="{
+                    path: 'currentPlan>/status',
+                    formatter: '.formatter.formatStatus'
+                    }" class="alignRight" />
+            </ObjectHeader>
+            <Table id="pdp-objTable" contextualWidth="Auto" items="{objTab>/}" class="mytable" noDataText="{i18n>pdp.noDataAvailableObjTable}">
+                <headerToolbar>
+                    <OverflowToolbar class="toolbarSize">
+                        <Title text="{i18n>pdp.objTabTitle}" level="H2" />
+                        <ToolbarSpacer />
+                        <Button id="pdp-importOldButtonMobile" icon="sap-icon://history" press="onPressImportOld" visible="false" class="mySubmitButton" />
+                        <Button id="pdp-addLibButtonMobile" icon="sap-icon://add" press="onNewLibObj" visible="false" class="mySubmitButton" />
+                        <Button id="pdp-addCustButtonMobile" icon="sap-icon://add-favorite" press="onCreateCustom" visible="false" class="mySubmitButton" />
+                        <Button id="pdp-importOldButton" text="{i18n>pdp.importOldButtonText}" icon="sap-icon://history" press="onPressImportOld" visible="false" class="mySubmitButton" />
+                        <Button id="pdp-addLibButton" text="{i18n>pdp.addLibButtonText}" icon="sap-icon://add" press="onNewLibObj" visible="false" class="mySubmitButton" />
+                        <Button id="pdp-addCustButton" text="{i18n>pdp.addCustButtonText}" icon="sap-icon://add-favorite" press="onCreateCustom" visible="false" class="mySubmitButton" />
+                        <Button id="pdp-objTabHelp" icon="sap-icon://sys-help" press="handleObjTabHelp" class="homepageButtonColor" ariaHasPopup="Dialog" visible="true">
+                            <tooltip>
+                                <core:TooltipBase visible="false" />
+                            </tooltip>
+                        </Button>
+                        <Button id="pdp-objTabEditHelp" icon="sap-icon://sys-help" press="handleObjTabEditHelp" class="homepageButtonColor" ariaHasPopup="Dialog" visible="false">
+                            <tooltip>
+                                <core:TooltipBase visible="false" />
+                            </tooltip>
+                        </Button>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="auto">
+                        <Text text="{i18n>pdp.colHeaderTitle}" />
+                    </Column>
+                    <Column width="auto" demandPopin="true" minScreenWidth="Tablet">
+                        <Text text="{i18n>pdp.colHeaderDesc}" />
+                    </Column>
+                    <Column demandPopin="true" width="8%" minScreenWidth="Tablet">
+                        <Text text="{i18n>pdp.colHeaderType}" />
+                    </Column>
+                    <Column demandPopin="true" width="8%" minScreenWidth="Tablet">
+                        <Text text="{i18n>pdp.colHeaderCreator}" />
+                    </Column>
+                    <Column demandPopin="true" width="8%" minScreenWidth="Tablet">
+                        <Text text="{i18n>pdp.colHeaderIniType}" />
+                    </Column>
+                    <Column demandPopin="true" width="8%" minScreenWidth="Tablet">
+                        <Text text="{i18n>pdp.colHeaderRealDate}" />
+                    </Column>
+                    <Column demandPopin="true" width="auto" minScreenWidth="Desktop">
+                        <Text text="{i18n>pdp.colHeaderObs}" />
+                    </Column>
+                    <Column demandPopin="true" minScreenWidth="Desktop" width="8%">
+                        <Text text="{i18n>pdp.colHeaderStatus}" />
+                    </Column>
+                    <Column demandPopin="true" width="5%" minScreenWidth="Desktop">
+                        <Text text="{i18n>pdp.colHeaderActions}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <ObjectIdentifier title="{objTab>cust_objectiveName}" />
+                            <Text text="{objTab>cust_objectiveDesc}" />
+                            <Text text="{
+                                        path: 'objTab>cust_initiativeType',
+                                        formatter: '.formatter.formatObjType'
+                                        }" />
+                            <Text
+                                text="{
+                                parts: [
+                                    {path: 'objTab>cust_createdByManager'},
+                                    {path: 'i18n>pdp.creatorMgrTextMgr'},
+                                    {path: 'i18n>pdp.creatorMgrTextEmp'}
+                                ],
+                                formatter: '.formatter.formatCreator'
+                                }"
+                            />
+                            <Text
+                                text="{
+                                parts: [
+                                    {path: 'objTab>cust_objLibraryId'},
+                                    {path: 'i18n>pdp.creatorMgrTextNew'},
+                                    {path: 'i18n>pdp.creatorMgrTextLib'}
+                                ],
+                                formatter: '.formatter.formatIniType'
+                                }"
+                            />
+                            <Text text="{
+                                        path: 'objTab>cust_objectiveRealDate',
+                                        formatter: '.formatter.formatDate'
+                                        }" />
+                            <Text text="{objTab>cust_objectiveObs}" wrapping="false" />
+                            <ObjectStatus
+                                text="{
+                                        path: 'objTab>cust_objectiveStatus',
+                                        formatter: '.formatter.formatObjStatus'
+                                        }"
+                                state="{
+                                        path: 'objTab>cust_objectiveStatus',
+                                        formatter: '.formatter.formatObjStatusState'
+                                        }"
+                                class="bold"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <l:Grid defaultSpan="XL4 L4 M4 S12" class="strengthsPadding">
+                <VBox>
+                    <Panel>
+                        <OverflowToolbar class="toolbarSize">
+                            <Title text="{i18n>pdp.strengthsTitle}" />
+                        </OverflowToolbar>
+                        <Text
+                            id="pdp-textStrP"
+                            text="{
+                                parts: [
+                                    {path: 'currentPlan>/strongPoints'},
+                                    {path: 'i18n>pdp.strPointsPlaceholder'}
+                                ],
+                                formatter: '.formatter.formatExtraText'
+                            }"
+                            width="100%"
+                            class="sapUiSmallMarginTop sapUiSmallMarginBottom"
+                        />
+                        <TextArea maxLength="4000" rows="8" id="pdp-textArStrP" value="{currentPlan>/strongPoints}" placeholder="{i18n>pdp.strengthsTitle}" width="100%" visible="false" />
+                    </Panel>
+                </VBox>
+                <VBox>
+                    <Panel>
+                        <OverflowToolbar class="toolbarSize">
+                            <Title text="{i18n>pdp.improvTitle}" />
+                        </OverflowToolbar>
+                        <Text
+                            id="pdp-textImp"
+                            text="{
+                                parts: [
+                                    {path: 'currentPlan>/improvements'},
+                                    {path: 'i18n>pdp.impPlaceholder'}
+                                ],
+                                formatter: '.formatter.formatExtraText'
+                            }"
+                            width="100%"
+                            class="sapUiSmallMarginTop sapUiSmallMarginBottom"
+                        />
+                        <TextArea maxLength="4000" rows="8" id="pdp-textArImp" value="{currentPlan>/improvements}" placeholder="{i18n>pdp.improvTitle}" width="100%" visible="false" />
+                    </Panel>
+                </VBox>
+                <VBox visible="{
+                    path: 'currentPlan>/status',
+                    formatter: '.formatter.formatMobVisibility'
+                }">
+                    <Panel>
+                        <OverflowToolbar class="toolbarSize">
+                            <Title text="{i18n>pdp.mobAreaTitle}" />
+                        </OverflowToolbar>
+                        <Text class="sapUiSmallMarginTop" text="{i18n>pdp.noAnswerMobFin}" visible="{mobilityModel>/noAnswerViewState}" />
+                        <l:VerticalLayout width="100%" visible="{mobilityModel>/answerViewState}">
+                            <Text text="{
+                                parts: [
+                                    {path: 'mobilityTab>/cust_mobAnswer'},
+                                    {path: 'i18n>pdp.mobYes'},
+                                    {path: 'i18n>pdp.mobNo'}
+                                ],
+                                formatter: '.formatter.formatMobilityAnswer'
+                                }" class="sapUiSmallMarginTop" />
+                            <Title level="H2" text="{i18n>pdp.mobAreaChoice}" class="sapUiSmallMarginTop" visible="{mobilityTab>/cust_mobAnswer}" />
+                            <Text
+                                text="{
+                                parts: [
+                                    {path: 'mobilityTab>/cust_mobArea01'},
+                                    {path: 'i18n>pdp.noSelectedAreas'}
+                                ],
+                                formatter: '.formatter.formatMobilityText'
+                                }"
+                                class="sapUiTinyMarginTop"
+                                visible="{mobilityTab>/cust_mobAnswer}"
+                            />
+                            <Text text="{mobilityTab>/cust_mobArea02}" class="sapUiTinyMarginTop" visible="{mobilityTab>/cust_mobAnswer}" />
+                            <Text text="{mobilityTab>/cust_mobArea03}" class="sapUiTinyMarginTop" visible="{mobilityTab>/cust_mobAnswer}" />
+                        </l:VerticalLayout>
+                    </Panel>
+                </VBox>
+            </l:Grid>
+        </content>
+        <footer>
+            <Toolbar class="headerSize">
+                <ToolbarSpacer />
+                <Button icon="sap-icon://undo" class="footerButtonsColor" text="{i18n>pdp.exitButtonText}" press="onNavBack" />
+                <Button
+                    class="footerButtonsColor"
+                    id="pdp-editButton"
+                    press="onEdit"
+                    text="{i18n>pdp.editButtonText}"
+                    icon="sap-icon://edit"
+                    visible="{
+                                        path: 'currentPlan>/status',
+                                        formatter: '.formatter.formatVisibilityMgr'
+                                        }"
+                />
+                <Button id="pdp-cancelButton" press="onCancel" class="footerButtonsColor" text="{i18n>pdp.cancelButtonText}" visible="false" icon="sap-icon://cancel" />
+                <Button id="pdp-saveButton" press="onSave" class="footerButtonsColor" text="{i18n>pdp.saveButtonText}" visible="false" icon="sap-icon://save" />
+                <Button
+                    class="footerButtonsColor"
+                    id="pdp-pullPlan"
+                    press="onPullPlan"
+                    text="{i18n>pdp.pullButtonText}"
+                    icon="sap-icon://action"
+                    visible="{
+                     parts: [
+                        {path: 'currentPlan>/editDate'},
+                        {path: 'currentPlan>/status'}
+                    ],
+                    formatter: '.formatter.formatVisibilityPull'
+                }"
+                />
+                <Button id="pdp-submitButton" icon="sap-icon://paper-plane" class="footerButtonsColor" text="{i18n>pdp.submitButtonText}" press="onPressSubmit" visible="{
+                    path: 'currentPlan>/status',
+                    formatter: '.formatter.formatVisibilitySubmit'
+                }" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

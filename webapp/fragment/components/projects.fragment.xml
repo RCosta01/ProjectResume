@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:custom="projects.controller.components">
+    <l:Grid defaultSpan="XL3 L2 M1" class="myUiLargeMarginBottom">
+        <FlexBox visible="{= !${device>/system/phone} }"/>
+        <VBox>
+            <Panel class="myUiLargeMarginTop">
+                <VBox>
+                    <Title text="{i18n>homepage.projects.title}" class="section-title"/>
+                </VBox>
+            </Panel>
+            <VBox class="sapUiLargeMarginTop">
+                <custom:Timeline items="{ path: 'Timeline>/', sorter: { path: 'startDate', descending: true } }">
+                    <custom:TimelineItem title="{Timeline>date}" subtitle="{Timeline>title}" description="{Timeline>description}" date="{Timeline>startDate}" demo="{Timeline>demo}" linkPress="onLinkpress" />
+                </custom:Timeline>
+            </VBox>
+            <layoutData>
+                <l:GridData span="XL6 L8 M10 S12" />
+            </layoutData>
+        </VBox>
+        <FlexBox visible="{= !${device>/system/phone} }"/>
+    </l:Grid>
+</core:FragmentDefinition>

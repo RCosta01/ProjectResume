@@ -1,0 +1,254 @@
+<mvc:View
+	controllerName="projects.controller.pdp.homepage"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:fb="sap.ui.comp.filterbar"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+    class="pdpPage"
+>
+<Page busyIndicatorDelay="0" id="pdp-page" title="{i18n>pdp.title}" showHeader="false">
+        <content>
+            <VBox>
+                <OverflowToolbar class="headerColor headerSize">
+                    <Button text="" press=".onNavBack" type="Back" class="colorButtonInner" />
+                    <core:Icon src="sap-icon://sap-ui5" size="30px" class="whiteIcon"/>
+                    <Title text="{i18n>pdp.title}" level="H1" class="headerTextColor headerTextSize" />
+                    <ToolbarSpacer />
+                    <core:Icon src="sap-icon://customer" class="headerTextColor" />
+                    <Label class="sapUiSmallMarginEnd headerTextColor" text="Brandon Murray" />
+                    <Button text="{i18n>pdp.appLogout}" press="onLogout" class="colorButtonInner" />
+                </OverflowToolbar>
+            </VBox>
+            <l:Grid defaultSpan="XL3 L3 M12 S12" class="sapUiTinyMarginTop">
+                <VBox class="mylist">
+                    <VBox backgroundDesign="Solid" class="paddingBottom">
+                        <OverflowToolbar class="headerToolbarPadding toolbarSize">
+                            <core:Icon src="sap-icon://action-settings" size="1.5rem" />
+                            <Title level="H2" text="{i18n>pdp.actionsTitle}" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://sys-help" press="handleActionsHelp" class="homepageButtonColor" ariaHasPopup="Dialog">
+                                <tooltip>
+                                    <core:TooltipBase visible="false" />
+                                </tooltip>
+                            </Button>
+                        </OverflowToolbar>
+                        <Button text="{i18n>pdp.addMassObjButtonText}" width="100%" press="onOpenMassObj" class="sapUiSmallMarginTop paddingBegEnd actionButtons" />
+                        <Button text="{i18n>pdp.exportExcelButtonText}" width="100%" press="onExport" class="sapUiSmallMarginTop paddingBegEnd actionButtons" />
+                    </VBox>
+
+                    <OverflowToolbar class="sapUiMediumMarginTop headerToolbarPadding toolbarSize">
+                        <core:Icon src="sap-icon://group" size="1.5rem" />
+                        <Title text="{i18n>pdp.myTeamTableTitle}" level="H2" />
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://multiselect-all" press="onPressSelectAll" class="homepageButtonColor">
+                            <tooltip>
+                                <core:TooltipBase visible="false" />
+                            </tooltip>
+                        </Button>
+                    </OverflowToolbar>
+                    <Tree
+                        busyIndicatorDelay="0"
+                        id="pdp-myTeam"
+                        items="{teamsModel>/}"
+                        mode="MultiSelect"
+                        selectionChange="onSelectEmployee"
+                        includeItemInSelection="true"
+                        showNoData="false"
+                    >
+                        <CustomTreeItem busyIndicatorDelay="0">
+                            <l:VerticalLayout>
+                                <Title level="H3" text="{teamsModel>text}" class="mytitlefontsize" />
+                                <Text text="{teamsModel>department}" class="mydepfontsize" />
+                            </l:VerticalLayout>
+                        </CustomTreeItem>
+                    </Tree>
+                </VBox>
+                <VBox class="mytable">
+                    <VBox backgroundDesign="Solid">
+                        <Table
+                            id="pdp-PersPDP"
+                            contextualWidth="Auto"
+                            busyIndicatorDelay="0"
+                            updateFinished="onFinishPersPDPUpdate"
+                            noDataText="{i18n>pdp.noDataAvailablePersonalPDP}"
+                            items="{
+                                path: 'PersonalPDP>/',
+                                filters: [{
+                                    path: 'Status',
+                                    operator: 'NE',
+                                    value1: '1'
+                                }]
+                            }"
+                        >
+                            <headerToolbar>
+                                <OverflowToolbar class="toolbarSize">
+                                    <core:Icon src="sap-icon://curriculum" size="1.5rem" />
+                                    <Title text="{i18n>pdp.persTabTitle}" level="H2" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="{i18n>pdp.colHeaderTitle}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>pdp.colHeaderIniDate}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>pdp.colHeaderFinDate}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>pdp.colHeaderStatus}" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle" type="Navigation" press="onNavEmpPlan">
+                                    <cells>
+                                        <Text text="{PersonalPDP>Titulo}" wrapping="false" />
+                                        <Text text="{
+                                        path: 'PersonalPDP>DatadeInicio',
+                                        formatter: '.formatter.formatDate'
+                                        }" />
+                                        <Text text="{
+                                        path: 'PersonalPDP>EndDate',
+                                        formatter: '.formatter.formatDate'
+                                        }" />
+                                        <ObjectStatus
+                                            text="{
+                                        path: 'PersonalPDP>Status',
+                                        formatter: '.formatter.formatStatus'
+                                        }"
+                                            state="{
+                                            path: 'PersonalPDP>Status',
+                                            formatter: '.formatter.formatObjStatusState'
+                                        }"
+                                            class="bold"
+                                        />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </VBox>
+                    <OverflowToolbar class="sapUiMediumMarginTop headerToolbarPadding toolbarSize">
+                        <core:Icon src="sap-icon://curriculum" size="1.5rem" />
+                        <Title text="{i18n>pdp.teamTabTitle}" level="H2" />
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://sys-help" press="handleTeamHelp" class="homepageButtonColor" ariaHasPopup="Dialog">
+                            <tooltip>
+                                <core:TooltipBase visible="false" />
+                            </tooltip>
+                        </Button>
+                    </OverflowToolbar>
+                    <fb:FilterBar persistencyKey="" class="noPadding" useToolbar="false" header="" id="pdp-filterBar" search=".onFilterTable" showRestoreButton="false" showFilterConfiguration="false">
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>pdp.tabFiltersPlan}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox
+                                        id="pdp-TypeComboboxPDP"
+                                        change=""
+                                        width="100%"
+                                        selectionChange="onFilterTable"
+                                        items="{
+                                            path: 'pdpConfigData>/',
+                                            sorter : {
+                                                path : 'cust_pdpName',
+                                                descending: false
+                                            }
+                                        }"
+                                    >
+                                        <core:Item key="{pdpConfigData>cust_pdpId}" text="{pdpConfigData>cust_pdpName}" />
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>pdp.tabFiltersStatus}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="pdp-TypeCombobox" change="" width="100%" selectionChange="onFilterTable" items="{statusList>/}">
+                                        <core:Item key="{statusList>externalCode}" text="{statusList>description}" />
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="{i18n>pdp.tabFiltersTime}" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DateRangeSelection id="pdp-DRS4" displayFormat="dd/MM/yyyy" change="onFilterTable" width="100%" class="sapUiSmallMarginEnd" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                    </fb:FilterBar>
+                    <Table
+                        id="pdp-chefiaTable"
+                        contextualWidth="Auto"
+                        busyIndicatorDelay="0"
+                        noDataText="{i18n>pdp.noDataAvailablePersonalPDP}"
+                        items="{path: 'TeamPDP>/',
+                        sorter: [
+                            {
+                            path : 'Titulo',
+                            descending: true
+                            }, {
+                            path: 'Nome',
+                            descending: false
+                            }
+                        ],
+                        filters: [
+                            {
+                                path: 'NColab', operator: 'EQ', value1: 'a'
+                            }
+                        ]
+                        }"
+                    >
+                        <columns>
+                            <Column width="auto">
+                                <Text text="{i18n>pdp.colHeaderTitle}" />
+                            </Column>
+                            <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>pdp.colHeaderColabName}" />
+                            </Column>
+                            <Column width="10%" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>pdp.colHeaderIniDate}" />
+                            </Column>
+                            <Column width="10%" minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>pdp.colHeaderFinDate}" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" width="10%">
+                                <Text text="{i18n>pdp.colHeaderStatus}" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle" type="Navigation" press="onOpenPlan">
+                                <cells>
+                                    <Text text="{TeamPDP>Titulo}" />
+                                    <Text text="{TeamPDP>Nome}" />
+                                    <Text text="{
+                                        path: 'TeamPDP>DatadeInicio',
+                                        formatter: '.formatter.formatDate'
+                                        }" />
+                                    <Text text="{
+                                        path: 'TeamPDP>EndDate',
+                                        formatter: '.formatter.formatDate'
+                                        }" />
+                                    <ObjectStatus
+                                        text="{
+                                        path: 'TeamPDP>Status',
+                                        formatter: '.formatter.formatStatus'
+                                        }"
+                                        state="{
+                                            path: 'TeamPDP>Status',
+                                            formatter: '.formatter.formatObjStatusState'
+                                        }"
+                                        class="bold"
+                                    />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <layoutData>
+                        <l:GridData span="XL9 L9 M12 S12" />
+                    </layoutData>
+                </VBox>
+            </l:Grid>
+        </content>
+    </Page>
+</mvc:View>

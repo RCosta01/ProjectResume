@@ -8,16 +8,25 @@
     "sapui5"
   ],
   "main": "webapp/index.html",
-  "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.28.3",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@sap/ux-ui5-tooling": "1",
     "@ui5/cli": "^3.0.0",
-    "@sap/ux-ui5-tooling": "1"
+    "chart.js": "^3.7.1",
+    "gh-pages": "^6.3.0"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-tooling-modules"
+    ]
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#projects-display\"",
     "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#projects-display\"",
-    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
-    "deploy": "fiori verify",
+    "build": "ui5 build --all",
+    "deploy": "gh-pages -d dist",
     "deploy-config": "fiori add deploy-config",
     "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
     "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",

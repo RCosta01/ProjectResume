@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Bachelor's Degree - Computer Engineering",
+        "icon": "sap-icon://study-leave",
+        "company": "ISCTE-IUL",
+        "startDate": "2019-09",
+        "endDate": "2022-06"
+    },
+    {
+        "company": "AMT-Consulting",
+        "icon": "sap-icon://building",
+        "startDate": "2022-10",
+        "endDate": "Present",
+        "roles": [
+            {
+                "title": "ABAP Trainee Consultant",
+                "startDate": "2022-10",
+                "endDate": "2023-01"
+            },
+            {
+                "title": "ABAP Junior Consultant",
+                "startDate": "2023-01",
+                "endDate": "2024-04"
+            },
+            {
+                "title": "ABAP Consultant",
+                "startDate": "2024-04",
+                "endDate": "Present"
+            }
+        ]
+    }
+]

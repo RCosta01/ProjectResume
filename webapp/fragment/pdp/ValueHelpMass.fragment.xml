@@ -1,0 +1,15 @@
+<core:FragmentDefinition displayBlock="true" xmlns:core="sap.ui.core" height="100%" xmlns="sap.m">
+    <SelectDialog updateFinished="_valueHelpUpdateFinished" id="pdp-libObjSearchMass" title="{i18n>pdp.initiativeListTitle}" items="{ path: 'libraryObjectives>/',
+			sorter : {
+				path : 'cust_initiativeType',
+				group : true
+			},
+			groupHeaderFactory: '.getGroupHeader'
+		}" search="_handleValueHelpSearch" confirm="_handleValueHelpClose" cancel="" multiSelect="true">
+        <StandardListItem iconDensityAware="false" iconInset="false" title="{libraryObjectives>cust_objName}" description="{libraryObjectives>cust_objDesc}">
+            <customData>
+                <core:CustomData key="{libraryObjectives>cust_objLibraryId}" />
+            </customData>
+        </StandardListItem>
+    </SelectDialog>
+</core:FragmentDefinition>

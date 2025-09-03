@@ -1,0 +1,10 @@
+<core:FragmentDefinition displayBlock="true" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <SelectDialog busy="true" busyIndicatorDelay="0" updateFinished="_valueHelpUpdateFinishedOld" id="pdp-selDialOld" title="{i18n>pdp.initiativeListTitle}" items="{ path: 'oldPlanObj>/'
+		}" search="_handleValueHelpSearchOld" confirm="_handleValueHelpCloseOld" cancel="" multiSelect="true">
+        <StandardListItem iconDensityAware="false" iconInset="false" title="{oldPlanObj>cust_objectiveName}" description="{oldPlanObj>cust_objectiveDesc}">
+            <customData>
+                <core:CustomData key="{oldPlanObj>cust_objectiveId}" />
+            </customData>
+        </StandardListItem>
+    </SelectDialog>
+</core:FragmentDefinition>

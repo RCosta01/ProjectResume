@@ -1,0 +1,11 @@
+<mvc:View
+	controllerName="projects.controller.pdp.VOPlanPage"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+    class="pdpPage"
+>
+</mvc:View>

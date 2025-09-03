@@ -1,0 +1,68 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <l:Grid defaultSpan="XL3 L1" class="sapUiLargeMarginBottom">
+        <FlexBox />
+        <VBox>
+            <Panel class="sapUiLargeMarginTop">
+                <VBox>
+                    <Title text="{i18n>homepage.profHist.title}" class="section-title"/>
+                </VBox>
+            </Panel>
+            <VBox class="profHistList">
+                <List class="sapUiMediumMarginTop profHistList" backgroundDesign="Solid" items="{ path: 'profHist>/', sorter: { path: 'startDate', descending: true }}">
+                    <CustomListItem class="sapUiSmallMarginBottom">
+                        <HBox visible="{= ${profHist>roles} ? true : false }" class="sapUiTinyMarginBottom sapUiTinyMarginBegin">
+                            <HBox visible="{= !${device>/system/phone} }">
+                                <core:Icon src="{profHist>icon}" size="70px"/>
+                                <VBox class="sapUiSmallMarginBegin" justifyContent="Center" height="75px">
+                                    <Title text="{profHist>company}" />
+                                    <Text text="{profHist>startDate} - {profHist>endDate}" />
+                                </VBox>
+                                <List class="sapUiLargeMarginBegin profHistList-roles" backgroundDesign="Transparent" items="{ path: 'profHist>roles', sorter: { path: 'startDate', descending: true }}">
+                                    <CustomListItem>
+                                        <VBox class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                                            <Title text="{profHist>title}" />
+                                            <Text text="{profHist>startDate} - {profHist>endDate}" />
+                                        </VBox>
+                                    </CustomListItem>
+                                </List>
+                            </HBox>
+                            <VBox visible="{device>/system/phone}" width="100%">
+                                <HBox>
+                                    <core:Icon src="{profHist>icon}" size="70px"/>
+                                    <VBox class="sapUiSmallMarginBegin" justifyContent="Center" height="75px">
+                                        <Title text="{profHist>company}" />
+                                        <Text text="{profHist>startDate} - {profHist>endDate}" />
+                                    </VBox>
+                                </HBox>
+                                <VBox alignItems="Center" class="sapUiSmallMarginTop">
+                                    <List class="profHistList-roles" backgroundDesign="Transparent" items="{ path: 'profHist>roles', sorter: { path: 'startDate', descending: true }}">
+                                        <CustomListItem>
+                                            <VBox class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                                                <Title text="{profHist>title}" />
+                                                <Text text="{profHist>startDate} - {profHist>endDate}" />
+                                            </VBox>
+                                        </CustomListItem>
+                                    </List>
+                                </VBox>
+                            </VBox>
+                        </HBox>
+                        <HBox visible="{= !${profHist>roles} }" class="sapUiTinyMarginBottom sapUiTinyMarginBegin">
+                            <core:Icon src="{profHist>icon}" size="70px"/>
+                            <VBox class="sapUiSmallMarginBegin" justifyContent="Center">
+                                <Title text="{profHist>title}" wrapping="true"/>
+                                <Text text="{profHist>company}"/>
+                                <Text text="{profHist>startDate} - {profHist>endDate}" />
+                            </VBox>
+                        </HBox>
+                    </CustomListItem>
+                </List>
+            </VBox>
+            <layoutData>
+                <l:GridData span="XL6 L10 M12 S12" />
+            </layoutData>
+        </VBox>
+        <FlexBox />
+    </l:Grid>
+</core:FragmentDefinition>

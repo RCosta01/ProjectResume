@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <l:Grid defaultSpan="XL3 L2 M1" class="myUiLargeMarginBottom">
+        <FlexBox visible="{= !${device>/system/phone} }"/>
+        <VBox>
+            <Panel class="myUiLargeMarginTop">
+                <VBox>
+                    <Title text="{i18n>homepage.demos.title}" class="section-title"/>
+                </VBox>
+            </Panel>
+            <layoutData>
+                <l:GridData span="XL6 L8 M10 S12" />
+            </layoutData>
+        </VBox>
+        <FlexBox visible="{= !${device>/system/phone} }"/>
+    </l:Grid>
+    <VBox class="demosPadding">
+        <l:Grid defaultSpan="XL4 L6 M12 S12" content="{ path: 'demos>/', sorter: { path: 'date', descending: true } }" id="demosGrid">
+            <VBox alignContent="Center">
+                <HBox justifyContent="Center" class="myCenterMargins">
+                    <Button text="{demos>text}" press="onNavDemos" class="myProjectsButton" enabled="{demos>active}" />
+                </HBox>
+            </VBox>
+        </l:Grid>
+    </VBox>
+</core:FragmentDefinition>

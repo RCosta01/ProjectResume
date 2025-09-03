@@ -1,6 +1,65 @@
 <mvc:View controllerName="projects.controller.Homepage"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:core="sap.ui.core"
+          xmlns:custom="projects.controller.components">
+    <Page id="page"
+          title="{i18n>title}"
+          showHeader="true"
+          class="homepage">
+        <customHeader>
+            <core:Fragment fragmentName="projects.fragment.components.pageHeader"
+                           type="XML" />
+        </customHeader>
+        <content>
+            <VBox class="section" id="aboutMeSection">
+                <core:Fragment fragmentName="projects.fragment.components.aboutMe"
+                           type="XML" />
+            </VBox>
+            <VBox class="section" id="professionalHistorySection">
+                <core:Fragment fragmentName="projects.fragment.components.professionalHistory"
+                           type="XML" />
+            </VBox>
+            <VBox class="section" id="demosSection">
+                <core:Fragment fragmentName="projects.fragment.components.demos"
+                           type="XML" />
+            </VBox>
+            <VBox class="section" id="projectsSection">
+                <core:Fragment fragmentName="projects.fragment.components.projects"
+                           type="XML" />
+            </VBox>
+            <!-- <VBox class="sapUiLargeMarginTop"
+                  alignContent="Center"
+                  visible="{= !${device>/system/phone} }"
+                  height="170px">
+                <HBox justifyContent="Center"
+                      class="myCenterMargins">
+                    <Button text="PDP"
+                            width="360px"
+                            press="onNavPDP"
+                            class="myPDPButton myProjectsButton" />
+                </HBox>
+            </VBox>
+            <VBox class="sapUiLargeMarginTop"
+                  alignContent="Center"
+                  visible="{device>/system/phone}"
+                  alignItems="Center"
+                  height="170px">
+                <Button text="PDP"
+                        width="320px"
+                        press="onNavPDP"
+                        class="myPDPButton myProjectsButton" />
+            </VBox> -->
+            <!--<VBox class="sapUiLargeMarginTop">
+                <custom:Timeline items="{ path: 'Timeline>/', sorter: { path: 'startDate', descending: true } }">
+                    <custom:TimelineItem title="{Timeline>date}"
+                                         subtitle="{Timeline>title}"
+                                         description="{Timeline>description}"
+                                         date="{Timeline>startDate}"
+                                         demo="{Timeline>demo}"
+                                         linkPress="onLinkpress" />
+                </custom:Timeline>
+            </VBox> -->
+        </content>
     </Page>
 </mvc:View>
