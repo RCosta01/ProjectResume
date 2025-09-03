@@ -84,7 +84,7 @@ sap.ui.define([
         onAfterRendering: function (oEvent) {
             const domRef = this.getDomRef();
             if (!domRef) return;
-            const threshold = Device.system.phone ? 0.4 : 0.6;
+            const threshold = Device.system.phone ? 0.2 : 0.6;
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
