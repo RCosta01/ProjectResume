@@ -95,11 +95,9 @@
 
 @media only screen and (min-width: 700px) {
 
-    .myPDPButton .sapMBtnInner {
-        background-image:
-            linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
-            url("../images/PDP-Homepage.png");
-        background-size: cover;
+    .myProjectsButton.sapMBtn{
+        height: 180px;
+        width: 360px;
     }
 
     .myProjectsButton .sapMBtnInner {
@@ -122,9 +120,6 @@
         height: 170px;
         width: 360px;
     }
-}
-
-@media only screen and (max-width: 700px) {
 
     .myPDPButton .sapMBtnInner {
         background-image:
@@ -133,8 +128,32 @@
         background-size: cover;
     }
 
+    .myWIPButton .sapMBtnInner:hover {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+            url("../images/WIP.jpg");
+        background-size: cover;
+        height: 170px;
+        width: 360px;
+    }
+
+    .myWIPButton .sapMBtnInner {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+            url("../images/WIP.jpg");
+        background-size: cover;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
     .myProjectsButton .sapMBtnInner {
         height: 150px;
+        width: 320px;
+    }
+
+    .myProjectsButton.sapMBtn{
+        height: 160px;
         width: 320px;
     }
 
@@ -151,4 +170,177 @@
             url("../images/PDP-Homepage.png");
         background-size: cover;
     }
+
+    .myPDPButton .sapMBtnInner {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+            url("../images/PDP-Homepage.png");
+        background-size: cover;
+    }
+
+    .myWIPButton .sapMBtnInner:hover {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+            url("../images/WIP.jpg");
+        background-size: cover;
+    }
+
+    .myWIPButton .sapMBtnInner {
+        background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+            url("../images/WIP.jpg");
+        background-size: cover;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .section {
+        padding: 60px 20px;
+    }
+
+    .myUiLargeMarginTop {
+        margin-top: 3rem !important;
+    }
+
+    .myUiLargeMarginBottom {
+        margin-bottom: 3rem !important;
+    }
+
+    .aboutMeTextVBox {
+        height: 315px;
+    }
+
+    .profHistList.sapMVBox {
+        padding: 0 10%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .section {
+        padding: 30px 20px
+    }
+
+    .myUiLargeMarginTop {
+        margin-top: 0rem !important;
+    }
+
+    .myUiLargeMarginBottom {
+        margin-bottom: 0rem !important;
+    }
+
+    .aboutMeTextVBox {
+        height: 250px;
+    }
+
+    .profHistList.sapMVBox {
+        padding: 0 5%;
+    }
+
+}
+
+.section:nth-child(odd):not(:has(.timeline .project-content .project)) {
+    background-color: #f4f4f4;
+    color: #222
+}
+
+.section:nth-child(odd):not(:has(.timeline .project-content .project)) .sapMTitle,
+.section:nth-child(odd):not(:has(.timeline .project-content .project)) .sapMText,
+.section:nth-child(odd):not(:has(.timeline .project-content .project)) .sapMLabel,
+.section:nth-child(odd):not(:has(.timeline .project-content .project)) .sapMBtn {
+    color: #222
+}
+
+.section:nth-child(even) {
+    background-color: rgba(17, 24, 39, 1);
+    color: #f4f4f4
+}
+
+.section:nth-child(even) .sapMTitle,
+.section:nth-child(even) .sapMText,
+.section:nth-child(even) .sapMLabel,
+.section:nth-child(even) .sapMBtn {
+    color: #f4f4f4
+}
+
+.portrait {
+    border-radius: 8%;
+    /* circular fade, or use px for rounded corners */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    /* fade to white background */
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.section .sapMPanelContent {
+    padding: 0.625rem 1rem 0.5rem 1rem;
+    box-sizing: border-box;
+    overflow: auto;
+    white-space: normal;
+}
+
+.githubIcon.sapMBtn {
+    height: 40px;
+    width: 48px;
+    padding: 0 0 0.1875rem 0;
+}
+
+.githubIcon.sapMBtn .sapMBtnInner {
+    height: 40px;
+    width: auto;
+    background-color: transparent;
+    border: 0rem;
+    align-items: center;
+}
+
+.githubIcon.sapMBtn .sapMBtnInner .sapMBtnIcon {
+    height: 32px;
+    max-height: 32px;
+    width: auto;
+}
+
+.aboutMeText {
+    font-size: 1.6rem;
+    font-weight: lighter;
+}
+
+.aboutMePicture {
+    text-align: center;
+}
+
+.sapUiSizeCompact .sapMPageWithHeader>section {
+    top: 60px;
+}
+
+.profHistList .sapMLIB {
+    background: transparent;
+}
+
+.profHistList .sapMTitle {
+    font-weight: bold;
+    font-size: 1.2rem
+}
+
+.profHistList .sapMText {
+    font-size: 1rem
+}
+
+.profHistList-roles.sapMList  {
+    margin-top: 8px
+}
+
+.profHistList-roles .sapMLIB:last-child {
+    border-bottom: 0;
+}
+
+.demosPadding {
+    padding: 0 10%
+}
+
+.headerSize .sapMBtnInner {
+    font-size: 1.2rem;
+    color: white
 }

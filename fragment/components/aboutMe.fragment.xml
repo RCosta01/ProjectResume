@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <l:Grid defaultSpan="XL3 L1 M1" class="myUiLargeMarginBottom">
+        <FlexBox visible="{= !${device>/system/phone} }"/>
+        <VBox>
+            <Panel class="myUiLargeMarginTop">
+                <VBox>
+                    <Title text="{i18n>homepage.aboutme.title}" class="section-title"/>
+                </VBox>
+            </Panel>
+            <l:Grid defaultSpan="XL8 L6 M6 S12" class="sapUiLargeMarginTop">
+                <VBox class="aboutMePicture" width="100%">
+                    <Image class="portrait" alt="Portrait" height="315px" mode="Image" src="./images/testes.JPG" width="250px"/>
+                    <layoutData>
+                        <l:GridData span="XL4 L6 M6 S12" />
+                    </layoutData>
+                </VBox>
+                <VBox justifyContent="Center" class="aboutMeTextVBox" width="100%">
+                    <Title text="{i18n>homepage.aboutme.text}" wrapping="true" class="aboutMeText"/>
+                </VBox>
+            </l:Grid>
+            <layoutData>
+                <l:GridData span="XL6 L10 M10 S12" />
+            </layoutData>
+        </VBox>
+        <FlexBox visible="{= !${device>/system/phone} }"/>
+    </l:Grid>
+</core:FragmentDefinition>

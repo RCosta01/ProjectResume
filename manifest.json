@@ -55,6 +55,14 @@
             "Timeline": {
                 "type": "sap.ui.model.json.JSONModel",
                 "uri": "model/timeline.json"
+            },
+            "profHist": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/profHist.json"
+            },
+            "demos": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/demos.json"
             }
         },
         "resources": {

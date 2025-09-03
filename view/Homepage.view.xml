@@ -2,45 +2,33 @@
           xmlns:mvc="sap.ui.core.mvc"
           xmlns="sap.m"
           xmlns:core="sap.ui.core"
-          xmlns:l="sap.ui.layout"
-          xmlns:custom="projects.controller">
+          xmlns:custom="projects.controller.components">
     <Page id="page"
           title="{i18n>title}"
-          showHeader="false"
+          showHeader="true"
           class="myBackgroundImage">
+        <customHeader>
+            <core:Fragment fragmentName="projects.fragment.components.pageHeader"
+                           type="XML" />
+        </customHeader>
         <content>
-            <VBox>
-                <OverflowToolbar class="headerColor headerSize"
-                                 height="60px">
-                    <core:Icon src="sap-icon://sap-ui5"
-                               size="30px" />
-                    <Title text="{i18n>title}"
-                           level="H1"
-                           class="headerTextColor headerTextSize" />
-                    <ToolbarSpacer />
-                </OverflowToolbar>
+            <VBox class="section" id="aboutMeSection">
+                <core:Fragment fragmentName="projects.fragment.components.aboutMe"
+                           type="XML" />
             </VBox>
-            <l:Grid>
-                <FlexBox>
-                    <layoutData>
-                        <l:GridData span="XL3 L3 M2 S1" />
-                    </layoutData>
-                </FlexBox>
-                <Panel class="sapUiLargeMarginTop">
-                    <VBox>
-                        <Title text="{i18n>homepage.aboutme.title} - WIP" />
-                    </VBox>
-                    <layoutData>
-                        <l:GridData span="XL6 L6 M8 S10" />
-                    </layoutData>
-                </Panel>
-                <FlexBox>
-                    <layoutData>
-                        <l:GridData span="XL4 L3 M2 S1" />
-                    </layoutData>
-                </FlexBox>
-            </l:Grid>
-            <!--<VBox class="sapUiLargeMarginTop"
+            <VBox class="section" id="professionalHistorySection">
+                <core:Fragment fragmentName="projects.fragment.components.professionalHistory"
+                           type="XML" />
+            </VBox>
+            <VBox class="section" id="demosSection">
+                <core:Fragment fragmentName="projects.fragment.components.demos"
+                           type="XML" />
+            </VBox>
+            <VBox class="section" id="projectsSection">
+                <core:Fragment fragmentName="projects.fragment.components.projects"
+                           type="XML" />
+            </VBox>
+            <!-- <VBox class="sapUiLargeMarginTop"
                   alignContent="Center"
                   visible="{= !${device>/system/phone} }"
                   height="170px">
@@ -61,22 +49,17 @@
                         width="320px"
                         press="onNavPDP"
                         class="myPDPButton myProjectsButton" />
-            </VBox>  -->
-            <VBox class="sapUiLargeMarginTop">
-                <custom:Timeline items="{
-                        path: 'Timeline>/',
-                        sorter: { path: 'startDate', descending: true }
-                    }" >
-                    <custom:TimelineItem
-                        title="{Timeline>date}"
-                        subtitle="{Timeline>title}"
-                        description="{Timeline>description}"
-                        date="{Timeline>startDate}"
-                        demo="{Timeline>demo}"
-                        linkPress="onLinkpress"
-                    />
+            </VBox> -->
+            <!--<VBox class="sapUiLargeMarginTop">
+                <custom:Timeline items="{ path: 'Timeline>/', sorter: { path: 'startDate', descending: true } }">
+                    <custom:TimelineItem title="{Timeline>date}"
+                                         subtitle="{Timeline>title}"
+                                         description="{Timeline>description}"
+                                         date="{Timeline>startDate}"
+                                         demo="{Timeline>demo}"
+                                         linkPress="onLinkpress" />
                 </custom:Timeline>
-            </VBox>
+            </VBox> -->
         </content>
     </Page>
 </mvc:View>
