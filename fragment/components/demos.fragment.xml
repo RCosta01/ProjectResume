@@ -19,7 +19,7 @@
         <l:Grid defaultSpan="XL4 L6 M12 S12" content="{ path: 'demos>/', sorter: { path: 'date', descending: true } }" id="demosGrid">
             <VBox alignContent="Center">
                     <HBox justifyContent="Center" class="myCenterMargins">
-                        <Button text="{demos>text}" press="onNavDemos" class="myPDPButton myProjectsButton {demos>css}" />
+                        <Button text="{demos>text}" press="onNavDemos" class="myProjectsButton" />
                     </HBox>
             </VBox>
         </l:Grid>
