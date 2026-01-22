@@ -1,5 +1,5 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
 ], (Controller) => {
     "use strict";
 
@@ -11,10 +11,6 @@ sap.ui.define([
                 sap.ui.getCore().applyTheme("sap_fiori_3_dark");
             }, this);
             //window.scrollTo(0, 0);
-        },
-
-        onNav: function () {
-            this.getOwnerComponent().getRouter().navTo('routePage1');
         },
 
         onNavDemos: function(oEvent){

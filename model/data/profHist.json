@@ -10,7 +10,7 @@
         "company": "AMT-Consulting",
         "icon": "sap-icon://building",
         "startDate": "2022-10",
-        "endDate": "Present",
+        "endDate": "2025-12",
         "roles": [
             {
                 "title": "ABAP Trainee Consultant",
@@ -25,6 +25,19 @@
             {
                 "title": "ABAP Consultant",
                 "startDate": "2024-04",
+                "endDate": "2025-12"
+            }
+        ]
+    },
+    {
+        "company": "Deloitte",
+        "icon": "sap-icon://building",
+        "startDate": "2026-01",
+        "endDate": "Present",
+        "roles": [
+            {
+                "title": "BTP Senior Consultant",
+                "startDate": "2026-01",
                 "endDate": "Present"
             }
         ]
