@@ -15,7 +15,7 @@
                         <HBox visible="{= ${profHist>roles} ? true : false }" class="sapUiTinyMarginBottom sapUiTinyMarginBegin">
                             <HBox visible="{= !${device>/system/phone} }">
                                 <core:Icon src="{profHist>icon}" size="70px"/>
-                                <VBox class="sapUiSmallMarginBegin" justifyContent="Center" height="75px">
+                                <VBox class="sapUiSmallMarginBegin" justifyContent="Center" height="75px" width="150px">
                                     <Title text="{profHist>company}" />
                                     <Text text="{profHist>startDate} - {profHist>endDate}" />
                                 </VBox>
